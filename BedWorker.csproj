@@ -52,10 +52,19 @@
     <Compile Include="BedWorkerApplicationForm.Designer.cs">
       <DependentUpon>BedWorkerApplicationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SettingsForm\ToolSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm\ToolSettingForm.Designer.cs">
+      <DependentUpon>ToolSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BedWorkerApplicationForm.resx">
       <DependentUpon>BedWorkerApplicationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm\ToolSettingForm.resx">
+      <DependentUpon>ToolSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
