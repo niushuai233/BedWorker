@@ -33,12 +33,12 @@
             this.radioButton_CustomProxy = new System.Windows.Forms.RadioButton();
             this.groupBox_proxyWay = new System.Windows.Forms.GroupBox();
             this.groupBox_proxyProtocol = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_proxy_port = new System.Windows.Forms.NumericUpDown();
+            this.textBox_proxy_host = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton_proxy_socks = new System.Windows.Forms.RadioButton();
             this.radioButton_proxy_http = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox_proxy_host = new System.Windows.Forms.TextBox();
-            this.numericUpDown_proxy_port = new System.Windows.Forms.NumericUpDown();
             this.groupBox_proxyWay.SuspendLayout();
             this.groupBox_proxyProtocol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_proxy_port)).BeginInit();
@@ -87,7 +87,7 @@
             this.groupBox_proxyWay.Controls.Add(this.radioButton_SystemProxy);
             this.groupBox_proxyWay.Location = new System.Drawing.Point(12, 12);
             this.groupBox_proxyWay.Name = "groupBox_proxyWay";
-            this.groupBox_proxyWay.Size = new System.Drawing.Size(465, 304);
+            this.groupBox_proxyWay.Size = new System.Drawing.Size(340, 285);
             this.groupBox_proxyWay.TabIndex = 3;
             this.groupBox_proxyWay.TabStop = false;
             this.groupBox_proxyWay.Text = "选择代理方式";
@@ -102,10 +102,44 @@
             this.groupBox_proxyProtocol.Controls.Add(this.radioButton_proxy_http);
             this.groupBox_proxyProtocol.Location = new System.Drawing.Point(16, 127);
             this.groupBox_proxyProtocol.Name = "groupBox_proxyProtocol";
-            this.groupBox_proxyProtocol.Size = new System.Drawing.Size(443, 171);
+            this.groupBox_proxyProtocol.Size = new System.Drawing.Size(318, 150);
             this.groupBox_proxyProtocol.TabIndex = 3;
             this.groupBox_proxyProtocol.TabStop = false;
             this.groupBox_proxyProtocol.Text = "选择代理协议";
+            // 
+            // numericUpDown_proxy_port
+            // 
+            this.numericUpDown_proxy_port.Location = new System.Drawing.Point(70, 103);
+            this.numericUpDown_proxy_port.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.numericUpDown_proxy_port.Name = "numericUpDown_proxy_port";
+            this.numericUpDown_proxy_port.Size = new System.Drawing.Size(163, 26);
+            this.numericUpDown_proxy_port.TabIndex = 5;
+            this.numericUpDown_proxy_port.Value = new decimal(new int[] {
+            7890,
+            0,
+            0,
+            0});
+            // 
+            // textBox_proxy_host
+            // 
+            this.textBox_proxy_host.Location = new System.Drawing.Point(70, 62);
+            this.textBox_proxy_host.Name = "textBox_proxy_host";
+            this.textBox_proxy_host.Size = new System.Drawing.Size(163, 26);
+            this.textBox_proxy_host.TabIndex = 4;
+            this.textBox_proxy_host.Text = "127.0.0.1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 105);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "端口：";
             // 
             // label1
             // 
@@ -138,45 +172,11 @@
             this.radioButton_proxy_http.Text = "HTTP";
             this.radioButton_proxy_http.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "端口：";
-            // 
-            // textBox_proxy_host
-            // 
-            this.textBox_proxy_host.Location = new System.Drawing.Point(70, 62);
-            this.textBox_proxy_host.Name = "textBox_proxy_host";
-            this.textBox_proxy_host.Size = new System.Drawing.Size(163, 26);
-            this.textBox_proxy_host.TabIndex = 4;
-            this.textBox_proxy_host.Text = "127.0.0.1";
-            // 
-            // numericUpDown_proxy_port
-            // 
-            this.numericUpDown_proxy_port.Location = new System.Drawing.Point(70, 103);
-            this.numericUpDown_proxy_port.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.numericUpDown_proxy_port.Name = "numericUpDown_proxy_port";
-            this.numericUpDown_proxy_port.Size = new System.Drawing.Size(163, 26);
-            this.numericUpDown_proxy_port.TabIndex = 5;
-            this.numericUpDown_proxy_port.Value = new decimal(new int[] {
-            7890,
-            0,
-            0,
-            0});
-            // 
             // SubForm_NetworkProxy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 328);
+            this.ClientSize = new System.Drawing.Size(364, 304);
             this.Controls.Add(this.groupBox_proxyWay);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
