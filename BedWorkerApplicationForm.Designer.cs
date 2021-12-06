@@ -32,9 +32,9 @@ namespace BedWorker
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.AllSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AppSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BedServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.giteeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +45,8 @@ namespace BedWorker
             this.关于ToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(800, 25);
+            this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(11, 4, 0, 4);
+            this.mainMenuStrip.Size = new System.Drawing.Size(688, 29);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -61,8 +62,23 @@ namespace BedWorker
             // AppSettingsToolStripMenuItem
             // 
             this.AppSettingsToolStripMenuItem.Name = "AppSettingsToolStripMenuItem";
-            this.AppSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AppSettingsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.AppSettingsToolStripMenuItem.Text = "工具设置";
+            this.AppSettingsToolStripMenuItem.Click += new System.EventHandler(this.ToolSettingsMenuItem_click);
+            // 
+            // BedServerToolStripMenuItem
+            // 
+            this.BedServerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.giteeToolStripMenuItem});
+            this.BedServerToolStripMenuItem.Name = "BedServerToolStripMenuItem";
+            this.BedServerToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.BedServerToolStripMenuItem.Text = "图床设置";
+            // 
+            // giteeToolStripMenuItem
+            // 
+            this.giteeToolStripMenuItem.Name = "giteeToolStripMenuItem";
+            this.giteeToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.giteeToolStripMenuItem.Text = "Gitee";
             // 
             // 关于ToolStripMenuItem
             // 
@@ -71,27 +87,15 @@ namespace BedWorker
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.aboutMenuItem_click);
             // 
-            // BedServerToolStripMenuItem
-            // 
-            this.BedServerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.giteeToolStripMenuItem});
-            this.BedServerToolStripMenuItem.Name = "BedServerToolStripMenuItem";
-            this.BedServerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.BedServerToolStripMenuItem.Text = "图床设置";
-            // 
-            // giteeToolStripMenuItem
-            // 
-            this.giteeToolStripMenuItem.Name = "giteeToolStripMenuItem";
-            this.giteeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.giteeToolStripMenuItem.Text = "Gitee";
-            // 
             // BedWorkerApplicationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(688, 441);
             this.Controls.Add(this.mainMenuStrip);
+            this.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.MainMenuStrip = this.mainMenuStrip;
+            this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "BedWorkerApplicationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BedWorker v1.0 @niushuai233";

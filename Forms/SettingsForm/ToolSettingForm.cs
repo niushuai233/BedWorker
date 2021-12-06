@@ -16,5 +16,10 @@ namespace BedWorker.Forms.SettingsForm
         {
             InitializeComponent();
         }
+
+        private void selectNode_click(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            MessageBox.Show(e.Node.Text);
+        }
     }
 }

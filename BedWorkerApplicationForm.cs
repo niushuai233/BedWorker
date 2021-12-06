@@ -25,5 +25,12 @@ namespace BedWorker
                 "邮箱：shuai.niu@foxmail.com",
                 "关于", MessageBoxButtons.OK);
         }
+
+        private void ToolSettingsMenuItem_click(object sender, EventArgs e)
+        {
+            Forms.SettingsForm.ToolSettingForm toolSettingForm = new Forms.SettingsForm.ToolSettingForm();
+
+            toolSettingForm.Show();
+        }
     }
 }
