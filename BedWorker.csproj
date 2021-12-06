@@ -53,6 +53,7 @@
     <Compile Include="BedWorkerApplicationForm.Designer.cs">
       <DependentUpon>BedWorkerApplicationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Base\ProxyConfig.cs" />
     <Compile Include="Entity\Base\TextBoxExt.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -77,6 +78,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\CommonConstant.cs" />
     <EmbeddedResource Include="BedWorkerApplicationForm.resx">
       <DependentUpon>BedWorkerApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
