@@ -53,6 +53,10 @@
     <Compile Include="BedWorkerApplicationForm.Designer.cs">
       <DependentUpon>BedWorkerApplicationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Base\TextBoxExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Entity\Enums\ToolSetNameEnum.cs" />
     <Compile Include="Forms\FormSettings\Form_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +69,12 @@
     <Compile Include="Forms\FormSettings\SubForm\SubForm_NetworkProxy.Designer.cs">
       <DependentUpon>SubForm_NetworkProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormSettings\SubForm\SubForm_Service_Gitee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSettings\SubForm\SubForm_Service_Gitee.Designer.cs">
+      <DependentUpon>SubForm_Service_Gitee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BedWorkerApplicationForm.resx">
@@ -76,6 +86,9 @@
     <EmbeddedResource Include="Forms\FormSettings\SubForm\SubForm_NetworkProxy.resx">
       <DependentUpon>SubForm_NetworkProxy.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSettings\SubForm\SubForm_Service_Gitee.resx">
+      <DependentUpon>SubForm_Service_Gitee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -84,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

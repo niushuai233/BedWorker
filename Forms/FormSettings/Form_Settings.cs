@@ -25,6 +25,9 @@ namespace BedWorker.Forms.SettingsForm
 
         private void SetNodeSelect_click(object sender, TreeNodeMouseClickEventArgs e)
         {
+
+            TreeNode node = e.Node;
+
             SubForm_NetworkProxy form = new SubForm_NetworkProxy();
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
