@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BedWorker.Entity.Enums;
 using BedWorker.Forms.FormSettings.SubForm;
 
 namespace BedWorker.Forms.SettingsForm
@@ -25,10 +26,29 @@ namespace BedWorker.Forms.SettingsForm
 
         private void SetNodeSelect_click(object sender, TreeNodeMouseClickEventArgs e)
         {
+            // panel2的form对象
+            Form form = null ;
 
-            TreeNode node = e.Node;
+            // 获取到不同的form
+            ToolSetNameEnum nodeEnum = ToolSetNameProgram.match(e.Node.Name);
+            switch (nodeEnum)
+            {
+                case ToolSetNameEnum.SetNetowrkNode:
+                    // 网络
+                    return;
+                case ToolSetNameEnum.SetNetworkProxySubNode:
+                    // 代理
+                    form = new SubForm_NetworkProxy();
+                    break;
+                case ToolSetNameEnum.SetServiceNode:
+                    // 服务
+                    return;
+                case ToolSetNameEnum.SetServiceGiteeSubNode:
+                    // Gitee
+                    form  = new SubForm_Service_Gitee();
+                    break;
+            }
 
-            SubForm_NetworkProxy form = new SubForm_NetworkProxy();
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;

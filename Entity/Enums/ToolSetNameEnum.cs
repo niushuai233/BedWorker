@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BedWorker.Forms.Entity.Enums
+namespace BedWorker.Entity.Enums
 {
     public enum ToolSetNameEnum
     {
@@ -19,6 +19,37 @@ namespace BedWorker.Forms.Entity.Enums
         /// <summary>
         /// Gitee
         /// </summary>
-        SetServiceGiteeSubNode
+        SetServiceGiteeSubNode,
+        /// <summary>
+        /// default
+        /// </summary>
+        DEFAULT
+    }
+
+    public static class ToolSetNameProgram
+    {
+        public static ToolSetNameEnum match(this string name)
+        {
+            if (name == ToolSetNameEnum.SetNetowrkNode.ToString())
+            {
+                return ToolSetNameEnum.SetNetowrkNode;
+            }
+            else if (name == ToolSetNameEnum.SetNetworkProxySubNode.ToString())
+            {
+                return ToolSetNameEnum.SetNetworkProxySubNode;
+            }
+            else if (name == ToolSetNameEnum.SetServiceNode.ToString())
+            {
+                return ToolSetNameEnum.SetServiceNode;
+            }
+            else if (name == ToolSetNameEnum.SetServiceGiteeSubNode.ToString())
+            {
+                return ToolSetNameEnum.SetServiceGiteeSubNode;
+            }
+            else
+            {
+                return ToolSetNameEnum.DEFAULT;
+            }
+        }
     }
 }
