@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BedWorker.Forms.SettingsForm
+namespace BedWorker.Forms.FormSettings.SubForm
 {
-    public partial class ToolSettingForm : Form
+    public partial class SubForm_NetworkProxy : Form
     {
-        public ToolSettingForm()
+        public SubForm_NetworkProxy()
         {
             InitializeComponent();
-        }
-
-        private void selectNode_click(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            MessageBox.Show(e.Node.Text);
         }
     }
 }

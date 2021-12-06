@@ -53,19 +53,28 @@
     <Compile Include="BedWorkerApplicationForm.Designer.cs">
       <DependentUpon>BedWorkerApplicationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SettingsForm\ToolSettingForm.cs">
+    <Compile Include="Forms\FormSettings\Form_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SettingsForm\ToolSettingForm.Designer.cs">
-      <DependentUpon>ToolSettingForm.cs</DependentUpon>
+    <Compile Include="Forms\FormSettings\Form_Settings.Designer.cs">
+      <DependentUpon>Form_Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSettings\SubForm\SubForm_NetworkProxy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSettings\SubForm\SubForm_NetworkProxy.Designer.cs">
+      <DependentUpon>SubForm_NetworkProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BedWorkerApplicationForm.resx">
       <DependentUpon>BedWorkerApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SettingsForm\ToolSettingForm.resx">
-      <DependentUpon>ToolSettingForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormSettings\Form_Settings.resx">
+      <DependentUpon>Form_Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSettings\SubForm\SubForm_NetworkProxy.resx">
+      <DependentUpon>SubForm_NetworkProxy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
