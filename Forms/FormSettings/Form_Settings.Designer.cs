@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("代理");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("网络", new System.Windows.Forms.TreeNode[] {
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Gitee");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("服务", new System.Windows.Forms.TreeNode[] {
-            treeNode11});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("代理");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("网络", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Gitee");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("服务", new System.Windows.Forms.TreeNode[] {
+            treeNode3});
             this.setSplitContainer = new System.Windows.Forms.SplitContainer();
             this.setTreeMenuTreeView = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.setSplitContainer)).BeginInit();
@@ -61,18 +61,18 @@
             this.setTreeMenuTreeView.ItemHeight = 28;
             this.setTreeMenuTreeView.Location = new System.Drawing.Point(12, 12);
             this.setTreeMenuTreeView.Name = "setTreeMenuTreeView";
-            treeNode9.Name = "SetNetworkProxySubNode";
-            treeNode9.Text = "代理";
-            treeNode10.Name = "SetNetowrkNode";
-            treeNode10.Text = "网络";
-            treeNode11.Name = "SetServiceGiteeSubNode";
-            treeNode11.Text = "Gitee";
-            treeNode12.Name = "SetServiceNode";
-            treeNode12.Text = "服务";
+            treeNode1.Name = "SetNetworkProxySubNode";
+            treeNode1.Text = "代理";
+            treeNode2.Name = "SetNetowrkNode";
+            treeNode2.Text = "网络";
+            treeNode3.Name = "SetServiceGiteeSubNode";
+            treeNode3.Text = "Gitee";
+            treeNode4.Name = "SetServiceNode";
+            treeNode4.Text = "服务";
             this.setTreeMenuTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode12});
-            this.setTreeMenuTreeView.Size = new System.Drawing.Size(251, 426);
+            treeNode2,
+            treeNode4});
+            this.setTreeMenuTreeView.Size = new System.Drawing.Size(169, 287);
             this.setTreeMenuTreeView.TabIndex = 0;
             this.setTreeMenuTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.SetNodeSelect_click);
             // 

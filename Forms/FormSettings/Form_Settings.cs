@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BedWorker.Forms.FormSettings.SubForm;
 
 namespace BedWorker.Forms.SettingsForm
 {
@@ -24,13 +25,13 @@ namespace BedWorker.Forms.SettingsForm
 
         private void SetNodeSelect_click(object sender, TreeNodeMouseClickEventArgs e)
         {
-            //Form_ToolSetting form = new Forms.SettingsForm.Form_ToolSetting();
-            //form.TopLevel = false;
-            //form.FormBorderStyle = FormBorderStyle.None;
-            //form.Dock = DockStyle.Fill;
-            //this.setSplitContainer.Panel2.Controls.Add(form);
+            SubForm_NetworkProxy form = new SubForm_NetworkProxy();
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            this.setSplitContainer.Panel2.Controls.Add(form);
 
-            //form.Show();
+            form.Show();
         }
     }
 }
