@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Windows.Forms;
 
 using BedWorker.Config;
@@ -12,6 +13,27 @@ namespace BedWorker.Forms.FormSettings.SubForm
         {
             InitializeComponent();
             LoadProxyConfig();
+
+            HttpWebRequest webReq = (HttpWebRequest) WebRequest.Create("https://www.baidu.com");
+            webReq.Method = "POST";
+            IWebProxy proxy = webReq.Proxy;
+
+            if (proxy != null)
+            {
+                Uri uri = proxy.GetProxy(webReq.RequestUri);
+                if (uri != null)
+                {
+                    Console.WriteLine("系统代理 if：" + uri.ToString());
+                } else
+                {
+                    Console.WriteLine("系统代理 else： " + uri);
+                }
+            } 
+            else
+            {
+                Console.WriteLine("系统代理为空");
+            }
+
         }
         /// <summary>
         /// 加载代理设置
@@ -19,7 +41,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
         private void LoadProxyConfig()
         {
             // 默认禁用代理选项
-            this.DisableCustomProxy();
+            this.DisableCustomProxyGroupBox();
             // 读取代理配置进行初始化设置界面
             ProxyConfig proxyConfig = this.LoadFromFile();
 
@@ -43,17 +65,33 @@ namespace BedWorker.Forms.FormSettings.SubForm
 
         private void ClearAllProxy(ProxyConfig proxyConfig)
         {
-            throw new NotImplementedException();
+            // 禁用选项
+            this.EnableNoProxy();
+            this.DisableSystemProxy();
+            this.DisableCustomProxy();
+            this.DisableCustomProxyGroupBox();
         }
 
         private void InitSystemProxy(ProxyConfig proxyConfig)
         {
-            throw new NotImplementedException();
+            // 禁用选项
+            this.DisableNoProxy();
+            this.EnableSystemProxy();
+            this.DisableCustomProxy();
+            this.DisableCustomProxyGroupBox();
         }
 
         private void InitCustomProxy(ProxyConfig proxyConfig)
         {
-            throw new NotImplementedException();
+            // 禁用选项
+            this.DisableNoProxy();
+            this.DisableSystemProxy();
+            this.EnableCustomProxy();
+            this.EnableCustomProxyGroupBox();
+
+            // 回显网络代理主机和端口号
+            this.textBox_proxy_host.Text = proxyConfig.Host;
+            this.numericUpDown_proxy_port.Value = proxyConfig.Port;
         }
 
         private ProxyConfig LoadFromFile()
@@ -71,7 +109,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
         /// <param name="e">当前值</param>
         private void NoProxy_click(object sender, EventArgs e)
         {
-            this.DisableCustomProxy();
+            this.DisableCustomProxyGroupBox();
         }
 
         /// <summary>
@@ -81,7 +119,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
         /// <param name="e"></param>
         private void SystemProxy_click(object sender, EventArgs e)
         {
-            this.DisableCustomProxy();
+            this.DisableCustomProxyGroupBox();
         }
         /// <summary>
         /// 自定义代理
@@ -90,22 +128,64 @@ namespace BedWorker.Forms.FormSettings.SubForm
         /// <param name="e"></param>
         private void CustomProxy_click(object sender, EventArgs e)
         {
-            this.EnableCustomProxy();
+            this.EnableCustomProxyGroupBox();
         }
 
         /// <summary>
         /// 启用自定义代理
         /// </summary>
-        private void EnableCustomProxy()
+        private void EnableCustomProxyGroupBox()
         {
             this.groupBox_proxyProtocol.Enabled = true;
         }
         /// <summary>
         /// 禁用自定义代理
         /// </summary>
-        private void DisableCustomProxy()
+        private void DisableCustomProxyGroupBox()
         {
             this.groupBox_proxyProtocol.Enabled = false;
+        }
+        /// <summary>
+        /// 启用无代理选项
+        /// </summary>
+        private void EnableNoProxy()
+        {
+            this.radioButton_noProxy.Checked = true;
+        }
+        /// <summary>
+        /// 停用无代理选项
+        /// </summary>
+        private void DisableNoProxy()
+        {
+            this.radioButton_noProxy.Checked = false;
+        }
+        /// <summary>
+        /// 启用系统代理选项
+        /// </summary>
+        private void EnableSystemProxy()
+        {
+            this.radioButton_SystemProxy.Checked = true;
+        }
+        /// <summary>
+        /// 停用系统代理选项
+        /// </summary>
+        private void DisableSystemProxy()
+        {
+            this.radioButton_SystemProxy.Checked = false;
+        }
+        /// <summary>
+        /// 启用自定义代理选项
+        /// </summary>
+        private void EnableCustomProxy()
+        {
+            this.radioButton_CustomProxy.Checked = true;
+        }
+        /// <summary>
+        /// 停用自定义代理选项
+        /// </summary>
+        private void DisableCustomProxy()
+        {
+            this.radioButton_CustomProxy.Checked = false;
         }
     }
 }

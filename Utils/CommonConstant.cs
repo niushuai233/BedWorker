@@ -24,7 +24,7 @@ namespace BedWorker.Utils
         /// <returns>配置文件全路径</returns>
         public static string getConfigLocation()
         {
-            return CommonConstant.USER_PROFILE_DIRECTORY + "/" + CommonConstant.CONFIG_FILENAME
+            return CommonConstant.USER_PROFILE_DIRECTORY + "/" + CommonConstant.CONFIG_FILENAME;
         }
     }
 }
