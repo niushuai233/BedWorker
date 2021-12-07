@@ -34,7 +34,7 @@ namespace BedWorker.Forms.FormSettings
                     return;
                 case ToolSetNameEnum.SetNetworkProxySubNode:
                     // 代理
-                    form = new SubForm_NetworkProxy();
+                    form = new SubForm_NetworkProxy(this);
                     break;
                 case ToolSetNameEnum.SetServiceNode:
                     // 服务

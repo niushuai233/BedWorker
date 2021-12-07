@@ -39,7 +39,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton_proxy_socks = new System.Windows.Forms.RadioButton();
             this.radioButton_proxy_http = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_proxy_confirm = new System.Windows.Forms.Button();
+            this.button_proxy_cancel = new System.Windows.Forms.Button();
+            this.button_proxy_apply = new System.Windows.Forms.Button();
             this.groupBox_proxyWay.SuspendLayout();
             this.groupBox_proxyProtocol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_proxy_port)).BeginInit();
@@ -85,14 +87,13 @@
             // 
             // groupBox_proxyWay
             // 
-            this.groupBox_proxyWay.Controls.Add(this.button1);
             this.groupBox_proxyWay.Controls.Add(this.groupBox_proxyProtocol);
             this.groupBox_proxyWay.Controls.Add(this.radioButton_noProxy);
             this.groupBox_proxyWay.Controls.Add(this.radioButton_CustomProxy);
             this.groupBox_proxyWay.Controls.Add(this.radioButton_SystemProxy);
             this.groupBox_proxyWay.Location = new System.Drawing.Point(12, 12);
             this.groupBox_proxyWay.Name = "groupBox_proxyWay";
-            this.groupBox_proxyWay.Size = new System.Drawing.Size(385, 297);
+            this.groupBox_proxyWay.Size = new System.Drawing.Size(454, 295);
             this.groupBox_proxyWay.TabIndex = 3;
             this.groupBox_proxyWay.TabStop = false;
             this.groupBox_proxyWay.Text = "选择代理方式";
@@ -108,7 +109,7 @@
             this.groupBox_proxyProtocol.Enabled = false;
             this.groupBox_proxyProtocol.Location = new System.Drawing.Point(16, 127);
             this.groupBox_proxyProtocol.Name = "groupBox_proxyProtocol";
-            this.groupBox_proxyProtocol.Size = new System.Drawing.Size(254, 141);
+            this.groupBox_proxyProtocol.Size = new System.Drawing.Size(422, 150);
             this.groupBox_proxyProtocol.TabIndex = 3;
             this.groupBox_proxyProtocol.TabStop = false;
             this.groupBox_proxyProtocol.Text = "选择代理协议";
@@ -178,21 +179,44 @@
             this.radioButton_proxy_http.Text = "HTTP";
             this.radioButton_proxy_http.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // button_proxy_confirm
             // 
-            this.button1.Location = new System.Drawing.Point(291, 177);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.test_click);
+            this.button_proxy_confirm.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button_proxy_confirm.ForeColor = System.Drawing.SystemColors.Control;
+            this.button_proxy_confirm.Location = new System.Drawing.Point(213, 321);
+            this.button_proxy_confirm.Name = "button_proxy_confirm";
+            this.button_proxy_confirm.Size = new System.Drawing.Size(75, 32);
+            this.button_proxy_confirm.TabIndex = 4;
+            this.button_proxy_confirm.Text = "确定";
+            this.button_proxy_confirm.UseVisualStyleBackColor = false;
+            // 
+            // button_proxy_cancel
+            // 
+            this.button_proxy_cancel.Location = new System.Drawing.Point(294, 321);
+            this.button_proxy_cancel.Name = "button_proxy_cancel";
+            this.button_proxy_cancel.Size = new System.Drawing.Size(75, 32);
+            this.button_proxy_cancel.TabIndex = 5;
+            this.button_proxy_cancel.Text = "取消";
+            this.button_proxy_cancel.UseVisualStyleBackColor = true;
+            this.button_proxy_cancel.Click += new System.EventHandler(this.button_proxy_cancel_Click);
+            // 
+            // button_proxy_apply
+            // 
+            this.button_proxy_apply.Location = new System.Drawing.Point(375, 321);
+            this.button_proxy_apply.Name = "button_proxy_apply";
+            this.button_proxy_apply.Size = new System.Drawing.Size(75, 32);
+            this.button_proxy_apply.TabIndex = 6;
+            this.button_proxy_apply.Text = "应用";
+            this.button_proxy_apply.UseVisualStyleBackColor = true;
             // 
             // SubForm_NetworkProxy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 321);
+            this.ClientSize = new System.Drawing.Size(478, 365);
+            this.Controls.Add(this.button_proxy_apply);
+            this.Controls.Add(this.button_proxy_cancel);
+            this.Controls.Add(this.button_proxy_confirm);
             this.Controls.Add(this.groupBox_proxyWay);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -220,6 +244,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown_proxy_port;
         private System.Windows.Forms.TextBox textBox_proxy_host;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_proxy_confirm;
+        private System.Windows.Forms.Button button_proxy_cancel;
+        private System.Windows.Forms.Button button_proxy_apply;
     }
 }

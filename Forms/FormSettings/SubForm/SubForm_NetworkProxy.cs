@@ -8,9 +8,11 @@ namespace BedWorker.Forms.FormSettings.SubForm
 {
     public partial class SubForm_NetworkProxy : Form
     {
-        public SubForm_NetworkProxy()
+        public Form_Settings parentForm = null;
+        public SubForm_NetworkProxy(Form_Settings _this)
         {
             InitializeComponent();
+            parentForm = _this;
             LoadProxyConfig();
         }
         /// <summary>
@@ -175,9 +177,10 @@ namespace BedWorker.Forms.FormSettings.SubForm
 
         }
 
-        private void test_click(object sender, EventArgs e)
+        private void button_proxy_cancel_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            // 隐藏弹窗
+            parentForm.Dispose();
         }
     }
 }
