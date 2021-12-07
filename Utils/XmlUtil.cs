@@ -31,7 +31,9 @@ namespace BedWorker.Utils
             // 加载文件到流中
             FileStream fs = new FileStream(path, FileMode.Open);
             // 反序列化
-            return (T) xmlSerialzer.Deserialize(fs);
+            object v = xmlSerialzer.Deserialize(fs);
+            fs.Close();
+            return (T)v;
         }
 
         private static void Serializer_UnknownNode(object sender, XmlNodeEventArgs e)
