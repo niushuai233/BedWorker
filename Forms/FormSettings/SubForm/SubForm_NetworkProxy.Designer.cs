@@ -90,7 +90,7 @@
             this.groupBox_proxyWay.Controls.Add(this.radioButton_SystemProxy);
             this.groupBox_proxyWay.Location = new System.Drawing.Point(12, 12);
             this.groupBox_proxyWay.Name = "groupBox_proxyWay";
-            this.groupBox_proxyWay.Size = new System.Drawing.Size(340, 285);
+            this.groupBox_proxyWay.Size = new System.Drawing.Size(385, 297);
             this.groupBox_proxyWay.TabIndex = 3;
             this.groupBox_proxyWay.TabStop = false;
             this.groupBox_proxyWay.Text = "选择代理方式";
@@ -106,7 +106,7 @@
             this.groupBox_proxyProtocol.Enabled = false;
             this.groupBox_proxyProtocol.Location = new System.Drawing.Point(16, 127);
             this.groupBox_proxyProtocol.Name = "groupBox_proxyProtocol";
-            this.groupBox_proxyProtocol.Size = new System.Drawing.Size(318, 150);
+            this.groupBox_proxyProtocol.Size = new System.Drawing.Size(254, 141);
             this.groupBox_proxyProtocol.TabIndex = 3;
             this.groupBox_proxyProtocol.TabStop = false;
             this.groupBox_proxyProtocol.Text = "选择代理协议";
@@ -180,7 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 304);
+            this.ClientSize = new System.Drawing.Size(409, 321);
             this.Controls.Add(this.groupBox_proxyWay);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

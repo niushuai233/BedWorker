@@ -51,8 +51,12 @@
             // 
             this.setSplitContainer.Panel1.Controls.Add(this.setTreeMenuTreeView);
             this.setSplitContainer.Panel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.setSplitContainer.Size = new System.Drawing.Size(584, 311);
-            this.setSplitContainer.SplitterDistance = 194;
+            // 
+            // setSplitContainer.Panel2
+            // 
+            this.setSplitContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.setSplitContainer.Size = new System.Drawing.Size(634, 361);
+            this.setSplitContainer.SplitterDistance = 155;
             this.setSplitContainer.TabIndex = 0;
             // 
             // setTreeMenuTreeView
@@ -72,7 +76,7 @@
             this.setTreeMenuTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode2,
             treeNode4});
-            this.setTreeMenuTreeView.Size = new System.Drawing.Size(169, 287);
+            this.setTreeMenuTreeView.Size = new System.Drawing.Size(131, 337);
             this.setTreeMenuTreeView.TabIndex = 0;
             this.setTreeMenuTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.SetNodeSelect_click);
             // 
@@ -80,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 311);
+            this.ClientSize = new System.Drawing.Size(634, 361);
             this.Controls.Add(this.setSplitContainer);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

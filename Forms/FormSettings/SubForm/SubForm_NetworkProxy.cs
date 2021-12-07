@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Windows.Forms;
 
 using BedWorker.Config;
@@ -13,27 +12,6 @@ namespace BedWorker.Forms.FormSettings.SubForm
         {
             InitializeComponent();
             LoadProxyConfig();
-
-            HttpWebRequest webReq = (HttpWebRequest) WebRequest.Create("https://www.baidu.com");
-            webReq.Method = "POST";
-            IWebProxy proxy = webReq.Proxy;
-
-            if (proxy != null)
-            {
-                Uri uri = proxy.GetProxy(webReq.RequestUri);
-                if (uri != null)
-                {
-                    Console.WriteLine("系统代理 if：" + uri.ToString());
-                } else
-                {
-                    Console.WriteLine("系统代理 else： " + uri);
-                }
-            } 
-            else
-            {
-                Console.WriteLine("系统代理为空");
-            }
-
         }
         /// <summary>
         /// 加载代理设置
@@ -186,6 +164,15 @@ namespace BedWorker.Forms.FormSettings.SubForm
         private void DisableCustomProxy()
         {
             this.radioButton_CustomProxy.Checked = false;
+        }
+
+        private void ProxyCancel_click(object sender, EventArgs e)
+        {
+        }
+
+        private void ProxyConfirm_click(object sender, EventArgs e)
+        {
+
         }
     }
 }
