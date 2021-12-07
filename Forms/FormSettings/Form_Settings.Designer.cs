@@ -82,6 +82,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 311);
             this.Controls.Add(this.setSplitContainer);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_SettingsTabControl";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "设置";

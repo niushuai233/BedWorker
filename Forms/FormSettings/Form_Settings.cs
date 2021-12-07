@@ -52,6 +52,9 @@ namespace BedWorker.Forms.SettingsForm
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
+            // 清空面板
+            this.setSplitContainer.Panel2.Controls.Clear();
+            // 添加新的面板
             this.setSplitContainer.Panel2.Controls.Add(form);
 
             form.Show();

@@ -16,5 +16,10 @@ namespace BedWorker.Forms.FormSettings.SubForm
         {
             InitializeComponent();
         }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
