@@ -19,10 +19,6 @@ namespace BedWorker.Forms.SettingsForm
             InitializeComponent();
         }
 
-        private void SplitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
 
         private void SetNodeSelect_click(object sender, TreeNodeMouseClickEventArgs e)
         {

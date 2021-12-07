@@ -56,7 +56,7 @@
             this.radioButton_noProxy.TabStop = true;
             this.radioButton_noProxy.Text = "无代理";
             this.radioButton_noProxy.UseVisualStyleBackColor = true;
-            this.radioButton_noProxy.Click += new System.EventHandler(this.noProxy_click);
+            this.radioButton_noProxy.Click += new System.EventHandler(this.NoProxy_click);
             // 
             // radioButton_SystemProxy
             // 
@@ -68,7 +68,7 @@
             this.radioButton_SystemProxy.TabIndex = 1;
             this.radioButton_SystemProxy.Text = "使用系统代理";
             this.radioButton_SystemProxy.UseVisualStyleBackColor = true;
-            this.radioButton_SystemProxy.Click += new System.EventHandler(this.systemProxy_click);
+            this.radioButton_SystemProxy.Click += new System.EventHandler(this.SystemProxy_click);
             // 
             // radioButton_CustomProxy
             // 
@@ -80,7 +80,7 @@
             this.radioButton_CustomProxy.TabIndex = 2;
             this.radioButton_CustomProxy.Text = "自定义代理";
             this.radioButton_CustomProxy.UseVisualStyleBackColor = true;
-            this.radioButton_CustomProxy.Click += new System.EventHandler(this.customProxy_click);
+            this.radioButton_CustomProxy.Click += new System.EventHandler(this.CustomProxy_click);
             // 
             // groupBox_proxyWay
             // 

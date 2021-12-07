@@ -32,14 +32,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox3 = new BedWorker.Entity.Base.TextBoxExt();
+            this.textBox_gitee_directory_path = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox2 = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox1 = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox_gitee_repo = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox_gitee_username = new BedWorker.Entity.Base.TextBoxExt();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox_gitee_directory_path = new BedWorker.Entity.Base.TextBoxExt();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new BedWorker.Entity.Base.TextBoxExt();
             this.SuspendLayout();
             // 
             // label1
@@ -78,6 +78,43 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Token：";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 194);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 20);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "文件夹：";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 20);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Url：";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Enabled = false;
+            this.textBox3.Location = new System.Drawing.Point(70, 65);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Placeholder = "完整仓库地址";
+            this.textBox3.Size = new System.Drawing.Size(304, 26);
+            this.textBox3.TabIndex = 15;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // textBox_gitee_directory_path
+            // 
+            this.textBox_gitee_directory_path.Location = new System.Drawing.Point(70, 191);
+            this.textBox_gitee_directory_path.Name = "textBox_gitee_directory_path";
+            this.textBox_gitee_directory_path.Placeholder = "仓库内文件夹, 支持 / 多级文件夹";
+            this.textBox_gitee_directory_path.Size = new System.Drawing.Size(304, 26);
+            this.textBox_gitee_directory_path.TabIndex = 13;
+            this.textBox_gitee_directory_path.Text = "/img";
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(70, 147);
@@ -93,6 +130,7 @@
             this.textBox1.Placeholder = "分支名: 默认master";
             this.textBox1.Size = new System.Drawing.Size(235, 26);
             this.textBox1.TabIndex = 8;
+            this.textBox1.Text = "master";
             // 
             // textBox_gitee_repo
             // 
@@ -109,41 +147,6 @@
             this.textBox_gitee_username.Placeholder = "用户名: username";
             this.textBox_gitee_username.Size = new System.Drawing.Size(125, 26);
             this.textBox_gitee_username.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 194);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 20);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "文件夹：";
-            // 
-            // textBox_gitee_directory_path
-            // 
-            this.textBox_gitee_directory_path.Location = new System.Drawing.Point(70, 191);
-            this.textBox_gitee_directory_path.Name = "textBox_gitee_directory_path";
-            this.textBox_gitee_directory_path.Placeholder = "仓库内文件夹, 支持 / 多级文件夹";
-            this.textBox_gitee_directory_path.Size = new System.Drawing.Size(304, 26);
-            this.textBox_gitee_directory_path.TabIndex = 13;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 20);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Url：";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(70, 65);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Placeholder = "完整仓库地址";
-            this.textBox3.Size = new System.Drawing.Size(304, 26);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // SubForm_Service_Gitee
             // 
