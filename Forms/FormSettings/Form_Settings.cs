@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using BedWorker.Entity.Enums;
 using BedWorker.Forms.FormSettings.SubForm;
 
-namespace BedWorker.Forms.SettingsForm
+namespace BedWorker.Forms.FormSettings
 {
-    public partial class Form_SettingsTabControl : Form
+    public partial class Form_Settings : Form
     {
-        public Form_SettingsTabControl()
+        public Form_Settings()
         {
             InitializeComponent();
         }

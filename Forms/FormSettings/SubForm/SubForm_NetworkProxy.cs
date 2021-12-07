@@ -174,5 +174,10 @@ namespace BedWorker.Forms.FormSettings.SubForm
         {
 
         }
+
+        private void test_click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

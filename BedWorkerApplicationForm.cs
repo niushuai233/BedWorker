@@ -29,7 +29,7 @@ namespace BedWorker
         private void ToolSettingsMenuItem_click(object sender, EventArgs e)
         {
             // 打开设置窗口
-            Forms.SettingsForm.Form_SettingsTabControl toolSettingForm = new Forms.SettingsForm.Form_SettingsTabControl();
+            Forms.FormSettings.Form_Settings toolSettingForm = new Forms.FormSettings.Form_Settings();
 
             toolSettingForm.ShowDialog();
         }

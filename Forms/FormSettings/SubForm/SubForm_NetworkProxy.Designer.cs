@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.radioButton_proxy_socks = new System.Windows.Forms.RadioButton();
             this.radioButton_proxy_http = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox_proxyWay.SuspendLayout();
             this.groupBox_proxyProtocol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_proxy_port)).BeginInit();
@@ -84,6 +85,7 @@
             // 
             // groupBox_proxyWay
             // 
+            this.groupBox_proxyWay.Controls.Add(this.button1);
             this.groupBox_proxyWay.Controls.Add(this.groupBox_proxyProtocol);
             this.groupBox_proxyWay.Controls.Add(this.radioButton_noProxy);
             this.groupBox_proxyWay.Controls.Add(this.radioButton_CustomProxy);
@@ -176,6 +178,16 @@
             this.radioButton_proxy_http.Text = "HTTP";
             this.radioButton_proxy_http.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(291, 177);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.test_click);
+            // 
             // SubForm_NetworkProxy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -208,5 +220,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown_proxy_port;
         private System.Windows.Forms.TextBox textBox_proxy_host;
+        private System.Windows.Forms.Button button1;
     }
 }
