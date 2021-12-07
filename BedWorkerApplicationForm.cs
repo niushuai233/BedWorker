@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
+
+using BedWorker.Config;
+using BedWorker.Utils;
 
 namespace BedWorker
 {
@@ -15,6 +12,19 @@ namespace BedWorker
         public BedWorkerApplicationForm()
         {
             InitializeComponent();
+            InitConfigs();
+        }
+
+        private void InitConfigs()
+        {
+            // 加载文件到流中
+            string configFilePath = CommonConstant.getConfigLocation();
+            if (!File.Exists(configFilePath))
+            {
+                Console.WriteLine("配置文件不存在, 新建. | " + configFilePath);
+                XmlUtil.Obj2Xml<Configs>(configFilePath, Configs.Configs_Ref);
+            }
+            
         }
 
         private void aboutMenuItem_click(object sender, EventArgs e)

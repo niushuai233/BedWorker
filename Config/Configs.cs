@@ -9,10 +9,14 @@ namespace BedWorker.Config
     [XmlRootAttribute("Configs", IsNullable =false)]
     public class Configs
     {
-        public static Configs Configs_Ref = new Configs();
         /// <summary>
         /// 代理设置
         /// </summary>
         public ProxyConfig ProxyConfig { get; set; }
+
+        public static Configs Configs_Ref = new Configs()
+        {
+            ProxyConfig = new ProxyConfig()
+        };
     }
 }
