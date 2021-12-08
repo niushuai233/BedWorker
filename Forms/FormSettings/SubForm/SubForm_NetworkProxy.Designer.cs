@@ -189,6 +189,7 @@
             this.button_proxy_confirm.TabIndex = 4;
             this.button_proxy_confirm.Text = "确定";
             this.button_proxy_confirm.UseVisualStyleBackColor = false;
+            this.button_proxy_confirm.Click += new System.EventHandler(this.ProxyConfirm_click);
             // 
             // button_proxy_cancel
             // 
@@ -198,7 +199,7 @@
             this.button_proxy_cancel.TabIndex = 5;
             this.button_proxy_cancel.Text = "取消";
             this.button_proxy_cancel.UseVisualStyleBackColor = true;
-            this.button_proxy_cancel.Click += new System.EventHandler(this.button_proxy_cancel_Click);
+            this.button_proxy_cancel.Click += new System.EventHandler(this.ProxyCancel_click);
             // 
             // button_proxy_apply
             // 
@@ -208,6 +209,7 @@
             this.button_proxy_apply.TabIndex = 6;
             this.button_proxy_apply.Text = "应用";
             this.button_proxy_apply.UseVisualStyleBackColor = true;
+            this.button_proxy_apply.Click += new System.EventHandler(this.ProxyApply_click);
             // 
             // SubForm_NetworkProxy
             // 

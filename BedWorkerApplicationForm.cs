@@ -18,7 +18,7 @@ namespace BedWorker
         private void InitConfigs()
         {
             // 加载文件到流中
-            string configFilePath = CommonConstant.getConfigLocation();
+            string configFilePath = CommonConstant.GetConfigLocation();
             if (!File.Exists(configFilePath))
             {
                 Console.WriteLine("配置文件不存在, 新建. | " + configFilePath);

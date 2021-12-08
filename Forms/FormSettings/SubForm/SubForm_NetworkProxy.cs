@@ -45,6 +45,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
 
         private void ClearAllProxy(ProxyConfig proxyConfig)
         {
+            this.InitCustomProxy(proxyConfig);
             // 禁用选项
             this.EnableNoProxy();
             this.DisableSystemProxy();
@@ -52,8 +53,15 @@ namespace BedWorker.Forms.FormSettings.SubForm
             this.DisableCustomProxyGroupBox();
         }
 
+        [Obsolete]
         private void InitSystemProxy(ProxyConfig proxyConfig)
         {
+            // 取系统代理属性
+            proxyConfig.ProxyProtocol = CommonConstant.GetSystemProxyProtocol();
+            proxyConfig.Host = CommonConstant.GetSystemProxyHost();
+            proxyConfig.Port = CommonConstant.GetSystemProxyPort(); 
+
+            this.InitCustomProxy(proxyConfig);
             // 禁用选项
             this.DisableNoProxy();
             this.EnableSystemProxy();
@@ -70,8 +78,8 @@ namespace BedWorker.Forms.FormSettings.SubForm
             this.EnableCustomProxyGroupBox();
 
             // 回显网络代理主机和端口号
-            this.textBox_proxy_host.Text = proxyConfig.Host;
-            this.numericUpDown_proxy_port.Value = proxyConfig.Port;
+            this.textBox_proxy_host.Text = string.IsNullOrEmpty(proxyConfig.Host) || string.IsNullOrWhiteSpace(proxyConfig.Host) ? CommonConstant.Default_Proxy_Host : proxyConfig.Host;
+            this.numericUpDown_proxy_port.Value = (0 == proxyConfig.Port) ? CommonConstant.Default_Proxy_Port : proxyConfig.Port;
             if ("SOCKS".Equals(proxyConfig.ProxyProtocol))
             {
                 this.radioButton_proxy_http.Checked = false;
@@ -88,7 +96,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
         {
             // XmlUtil.Obj2Xml<Configs>(CommonConstant.getConfigLocation(), Configs.Configs_Ref);
 
-            Configs.Configs_Ref = XmlUtil.Xml2Obj<Configs>(CommonConstant.getConfigLocation());
+            Configs.Configs_Ref = XmlUtil.Xml2Obj<Configs>(CommonConstant.GetConfigLocation());
             return Configs.Configs_Ref.ProxyConfig;
         }
 
@@ -178,19 +186,85 @@ namespace BedWorker.Forms.FormSettings.SubForm
             this.radioButton_CustomProxy.Checked = false;
         }
 
-        private void ProxyCancel_click(object sender, EventArgs e)
-        {
-        }
-
+        /// <summary>
+        /// 确定点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ProxyConfirm_click(object sender, EventArgs e)
         {
-
+            this.ProxyApply_click(sender, e);
+            this.ProxyCancel_click(sender, e);
         }
 
-        private void button_proxy_cancel_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 取消点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ProxyCancel_click(object sender, EventArgs e)
         {
             // 隐藏弹窗
             parentForm.Dispose();
+        }
+
+        /// <summary>
+        /// 应用点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ProxyApply_click(object sender, EventArgs e)
+        {
+            // 将内容写到文件中
+            // 首先读取界面中的设置项设置到常量类中
+            ProxyConfig tmpConfig = new ProxyConfig()
+            {
+                ProxyWay = this.GetProxyWayVal(),
+                ProxyProtocol = this.GetProxyProtocol(),
+                Host = this.textBox_proxy_host.Text,
+                Port = int.Parse(this.numericUpDown_proxy_port.Value.ToString())
+            };
+
+            Configs.Configs_Ref.ProxyConfig = tmpConfig;
+            // 写入到xml中
+            XmlUtil.Obj2Xml<Configs>(CommonConstant.GetConfigLocation(), Configs.Configs_Ref);
+        }
+
+        private int GetProxyWayVal()
+        {
+            if (this.radioButton_noProxy.Checked == true)
+            {
+                return 1;
+            }
+            else if (this.radioButton_SystemProxy.Checked == true)
+            {
+                return 2;
+            }
+            else if (this.radioButton_CustomProxy.Checked == true)
+            {
+                return 3;
+            }
+            else
+            {
+                // 默认无代理
+                return 1;
+            }
+        }
+        private string GetProxyProtocol()
+        {
+            if (this.radioButton_proxy_http.Checked == true)
+            {
+                return "HTTP";
+            }
+            else if (this.radioButton_proxy_socks.Checked == true)
+            {
+                return "SOCKS";
+            }
+            else
+            {
+                // 默认HTTP
+                return "HTTP";
+            }
         }
     }
 }
