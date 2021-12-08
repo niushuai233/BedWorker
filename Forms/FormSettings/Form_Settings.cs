@@ -17,8 +17,17 @@ namespace BedWorker.Forms.FormSettings
         public Form_Settings()
         {
             InitializeComponent();
+            this.CustomInit();
         }
 
+        /// <summary>
+        /// 自定义初始化内容
+        /// </summary>
+        private void CustomInit()
+        {
+            // 默认展开所有节点
+            this.setTreeMenuTreeView.ExpandAll();
+        }
 
         private void SetNodeSelect_click(object sender, TreeNodeMouseClickEventArgs e)
         {
