@@ -53,7 +53,6 @@ namespace BedWorker.Forms.FormSettings.SubForm
             this.DisableCustomProxyGroupBox();
         }
 
-        [Obsolete]
         private void InitSystemProxy(ProxyConfig proxyConfig)
         {
             // 取系统代理属性

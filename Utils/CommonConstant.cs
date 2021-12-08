@@ -36,17 +36,15 @@ namespace BedWorker.Utils
         }
 
 
-        [Obsolete]
         public static string GetSystemProxyProtocol()
         {
-            Uri proxyAddress = System.Net.WebProxy.GetDefaultProxy().Address;
+            Uri proxyAddress = System.Net.WebProxy .GetDefaultProxy().Address;
             if (null == proxyAddress)
             {
                 return null;
             }
             return proxyAddress.Scheme;
         }
-        [Obsolete]
         public static string GetSystemProxyHost ()
         {
             Uri proxyAddress = System.Net.WebProxy.GetDefaultProxy().Address;
@@ -57,7 +55,6 @@ namespace BedWorker.Utils
             return proxyAddress.Host;
         }
 
-        [Obsolete]
         public static int GetSystemProxyPort ()
         {
             Uri proxyAddress = System.Net.WebProxy.GetDefaultProxy().Address;
