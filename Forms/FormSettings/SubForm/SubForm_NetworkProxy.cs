@@ -56,9 +56,9 @@ namespace BedWorker.Forms.FormSettings.SubForm
         private void InitSystemProxy(ProxyConfig proxyConfig)
         {
             // 取系统代理属性
-            proxyConfig.ProxyProtocol = CommonConstant.GetSystemProxyProtocol();
-            proxyConfig.Host = CommonConstant.GetSystemProxyHost();
-            proxyConfig.Port = CommonConstant.GetSystemProxyPort(); 
+            proxyConfig.ProxyProtocol = CommonUtil.GetSystemProxyProtocol();
+            proxyConfig.Host = CommonUtil.GetSystemProxyHost();
+            proxyConfig.Port = CommonUtil.GetSystemProxyPort(); 
 
             this.InitCustomProxy(proxyConfig);
             // 禁用选项
@@ -93,9 +93,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
 
         private ProxyConfig LoadFromFile()
         {
-            // XmlUtil.Obj2Xml<Configs>(CommonConstant.getConfigLocation(), Configs.Configs_Ref);
-
-            Configs.Configs_Ref = XmlUtil.Xml2Obj<Configs>(CommonConstant.GetConfigLocation());
+            Configs.Configs_Ref = XmlUtil.Xml2Obj<Configs>(CommonUtil.GetConfigLocation());
             return Configs.Configs_Ref.ProxyConfig;
         }
 
@@ -226,7 +224,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
 
             Configs.Configs_Ref.ProxyConfig = tmpConfig;
             // 写入到xml中
-            XmlUtil.Obj2Xml<Configs>(CommonConstant.GetConfigLocation(), Configs.Configs_Ref);
+            XmlUtil.Obj2Xml<Configs>(CommonUtil.GetConfigLocation(), Configs.Configs_Ref);
         }
 
         private int GetProxyWayVal()
