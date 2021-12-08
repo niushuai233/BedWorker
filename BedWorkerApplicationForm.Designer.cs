@@ -35,6 +35,8 @@ namespace BedWorker
             this.BedServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.giteeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,8 +89,17 @@ namespace BedWorker
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.aboutMenuItem_click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
             // BedWorkerApplicationForm
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 441);
@@ -99,6 +110,8 @@ namespace BedWorker
             this.Name = "BedWorkerApplicationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BedWorker v1.0 @niushuai233";
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.dragDropFile_click);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.dragEnterFile_click);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -114,6 +127,8 @@ namespace BedWorker
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem BedServerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem giteeToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
 

@@ -44,5 +44,32 @@ namespace BedWorker
 
             toolSettingForm.ShowDialog(this);
         }
+
+        private void dragDropFile_click(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                // 获取拖拽进来的文件列表
+                string[] filesPath = (string[])e.Data.GetData(DataFormats.FileDrop);
+                foreach (string file in filesPath)
+                {
+                    FileStream fs = new FileStream(file, FileMode.Open);
+                    Console.WriteLine(file);
+                    fs.Close();
+                }
+            }
+        }
+
+        private void dragEnterFile_click(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
     }
 }
