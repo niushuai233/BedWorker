@@ -14,9 +14,12 @@ namespace BedWorker.Config
         /// </summary>
         public ProxyConfig ProxyConfig { get; set; }
 
+        public Gitee Gitee { get; set; }
+
         public static Configs Configs_Ref = new Configs()
         {
-            ProxyConfig = new ProxyConfig()
+            ProxyConfig = new ProxyConfig(),
+            Gitee = new Gitee()
         };
     }
 }

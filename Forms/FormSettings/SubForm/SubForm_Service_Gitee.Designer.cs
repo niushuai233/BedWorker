@@ -34,10 +34,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new BedWorker.Entity.Base.TextBoxExt();
+            this.button_gitee_confirm = new System.Windows.Forms.Button();
+            this.button_gitee_cancel = new System.Windows.Forms.Button();
+            this.button_gitee_apply = new System.Windows.Forms.Button();
+            this.textBox_gitee_repoAbsolutePath = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox_gitee_directory_path = new BedWorker.Entity.Base.TextBoxExt();
-            this.textBox2 = new BedWorker.Entity.Base.TextBoxExt();
-            this.textBox1 = new BedWorker.Entity.Base.TextBoxExt();
+            this.textBox_gitee_token = new BedWorker.Entity.Base.TextBoxExt();
+            this.textBox_gitee_branch = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox_gitee_repo = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox_gitee_username = new BedWorker.Entity.Base.TextBoxExt();
             this.SuspendLayout();
@@ -96,15 +99,46 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Url：";
             // 
-            // textBox3
+            // button_gitee_confirm
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(70, 65);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Placeholder = "完整仓库地址";
-            this.textBox3.Size = new System.Drawing.Size(304, 26);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.button_gitee_confirm.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button_gitee_confirm.ForeColor = System.Drawing.SystemColors.Control;
+            this.button_gitee_confirm.Location = new System.Drawing.Point(202, 308);
+            this.button_gitee_confirm.Name = "button_gitee_confirm";
+            this.button_gitee_confirm.Size = new System.Drawing.Size(75, 32);
+            this.button_gitee_confirm.TabIndex = 16;
+            this.button_gitee_confirm.Text = "确定";
+            this.button_gitee_confirm.UseVisualStyleBackColor = false;
+            this.button_gitee_confirm.Click += new System.EventHandler(this.GiteeConfirm_click);
+            // 
+            // button_gitee_cancel
+            // 
+            this.button_gitee_cancel.Location = new System.Drawing.Point(283, 308);
+            this.button_gitee_cancel.Name = "button_gitee_cancel";
+            this.button_gitee_cancel.Size = new System.Drawing.Size(75, 32);
+            this.button_gitee_cancel.TabIndex = 17;
+            this.button_gitee_cancel.Text = "取消";
+            this.button_gitee_cancel.UseVisualStyleBackColor = true;
+            this.button_gitee_cancel.Click += new System.EventHandler(this.GiteeCancel_click);
+            // 
+            // button_gitee_apply
+            // 
+            this.button_gitee_apply.Location = new System.Drawing.Point(364, 308);
+            this.button_gitee_apply.Name = "button_gitee_apply";
+            this.button_gitee_apply.Size = new System.Drawing.Size(75, 32);
+            this.button_gitee_apply.TabIndex = 18;
+            this.button_gitee_apply.Text = "应用";
+            this.button_gitee_apply.UseVisualStyleBackColor = true;
+            this.button_gitee_apply.Click += new System.EventHandler(this.GiteeApply_click);
+            // 
+            // textBox_gitee_repoAbsolutePath
+            // 
+            this.textBox_gitee_repoAbsolutePath.Enabled = false;
+            this.textBox_gitee_repoAbsolutePath.Location = new System.Drawing.Point(70, 65);
+            this.textBox_gitee_repoAbsolutePath.Name = "textBox_gitee_repoAbsolutePath";
+            this.textBox_gitee_repoAbsolutePath.Placeholder = "完整仓库地址";
+            this.textBox_gitee_repoAbsolutePath.Size = new System.Drawing.Size(304, 26);
+            this.textBox_gitee_repoAbsolutePath.TabIndex = 15;
             // 
             // textBox_gitee_directory_path
             // 
@@ -115,22 +149,22 @@
             this.textBox_gitee_directory_path.TabIndex = 13;
             this.textBox_gitee_directory_path.Text = "/img";
             // 
-            // textBox2
+            // textBox_gitee_token
             // 
-            this.textBox2.Location = new System.Drawing.Point(70, 147);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Placeholder = "API: token";
-            this.textBox2.Size = new System.Drawing.Size(235, 26);
-            this.textBox2.TabIndex = 10;
+            this.textBox_gitee_token.Location = new System.Drawing.Point(70, 147);
+            this.textBox_gitee_token.Name = "textBox_gitee_token";
+            this.textBox_gitee_token.Placeholder = "API: token";
+            this.textBox_gitee_token.Size = new System.Drawing.Size(235, 26);
+            this.textBox_gitee_token.TabIndex = 10;
             // 
-            // textBox1
+            // textBox_gitee_branch
             // 
-            this.textBox1.Location = new System.Drawing.Point(70, 103);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Placeholder = "分支名: 默认master";
-            this.textBox1.Size = new System.Drawing.Size(235, 26);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "master";
+            this.textBox_gitee_branch.Location = new System.Drawing.Point(70, 103);
+            this.textBox_gitee_branch.Name = "textBox_gitee_branch";
+            this.textBox_gitee_branch.Placeholder = "分支名: 默认master";
+            this.textBox_gitee_branch.Size = new System.Drawing.Size(235, 26);
+            this.textBox_gitee_branch.TabIndex = 8;
+            this.textBox_gitee_branch.Text = "master";
             // 
             // textBox_gitee_repo
             // 
@@ -152,14 +186,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(386, 232);
-            this.Controls.Add(this.textBox3);
+            this.ClientSize = new System.Drawing.Size(451, 352);
+            this.Controls.Add(this.button_gitee_apply);
+            this.Controls.Add(this.button_gitee_cancel);
+            this.Controls.Add(this.button_gitee_confirm);
+            this.Controls.Add(this.textBox_gitee_repoAbsolutePath);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox_gitee_directory_path);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_gitee_token);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_gitee_branch);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox_gitee_repo);
             this.Controls.Add(this.label3);
@@ -181,12 +218,15 @@
         private System.Windows.Forms.Label label3;
         private BedWorker.Entity.Base.TextBoxExt textBox_gitee_repo;
         private System.Windows.Forms.Label label4;
-        private BedWorker.Entity.Base.TextBoxExt textBox1;
+        private BedWorker.Entity.Base.TextBoxExt textBox_gitee_branch;
         private System.Windows.Forms.Label label5;
-        private BedWorker.Entity.Base.TextBoxExt textBox2;
+        private BedWorker.Entity.Base.TextBoxExt textBox_gitee_token;
         private System.Windows.Forms.Label label7;
         private BedWorker.Entity.Base.TextBoxExt textBox_gitee_directory_path;
         private System.Windows.Forms.Label label2;
-        private BedWorker.Entity.Base.TextBoxExt textBox3;
+        private BedWorker.Entity.Base.TextBoxExt textBox_gitee_repoAbsolutePath;
+        private System.Windows.Forms.Button button_gitee_confirm;
+        private System.Windows.Forms.Button button_gitee_cancel;
+        private System.Windows.Forms.Button button_gitee_apply;
     }
 }

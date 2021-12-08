@@ -25,6 +25,8 @@ namespace BedWorker.Forms.FormSettings
         /// </summary>
         private void CustomInit()
         {
+            // 显示在父窗体中心位置
+            this.CenterToParent();
             // 默认展开所有节点
             this.setTreeMenuTreeView.ExpandAll();
         }
@@ -50,7 +52,7 @@ namespace BedWorker.Forms.FormSettings
                     return;
                 case ToolSetNameEnum.SetServiceGiteeSubNode:
                     // Gitee
-                    form  = new SubForm_Service_Gitee();
+                    form  = new SubForm_Service_Gitee(this);
                     break;
             }
 

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 using BedWorker.Config;
 using BedWorker.Utils;
+using BedWorker.Forms.FormSettings;
 
 namespace BedWorker
 {
@@ -39,9 +40,9 @@ namespace BedWorker
         private void ToolSettingsMenuItem_click(object sender, EventArgs e)
         {
             // 打开设置窗口
-            Forms.FormSettings.Form_Settings toolSettingForm = new Forms.FormSettings.Form_Settings();
+            Form_Settings toolSettingForm = new Form_Settings();
 
-            toolSettingForm.ShowDialog();
+            toolSettingForm.ShowDialog(this);
         }
     }
 }
