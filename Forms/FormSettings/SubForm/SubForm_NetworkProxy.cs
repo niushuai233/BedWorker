@@ -72,6 +72,16 @@ namespace BedWorker.Forms.FormSettings.SubForm
             // 回显网络代理主机和端口号
             this.textBox_proxy_host.Text = proxyConfig.Host;
             this.numericUpDown_proxy_port.Value = proxyConfig.Port;
+            if ("SOCKS".Equals(proxyConfig.ProxyProtocol))
+            {
+                this.radioButton_proxy_http.Checked = false;
+                this.radioButton_proxy_socks.Checked = true;
+            }
+            else
+            {
+                this.radioButton_proxy_http.Checked = true;
+                this.radioButton_proxy_socks.Checked = false;
+            }
         }
 
         private ProxyConfig LoadFromFile()
