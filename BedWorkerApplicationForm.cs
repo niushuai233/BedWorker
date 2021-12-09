@@ -28,7 +28,7 @@ namespace BedWorker
             
         }
 
-        private void aboutMenuItem_click(object sender, EventArgs e)
+        private void AboutMenuItem_click(object sender, EventArgs e)
         {
             MessageBox.Show(
                 "图床工助手v1.0 © 版权所有 2021.12 @niushuai233\n\n" +
@@ -45,7 +45,7 @@ namespace BedWorker
             toolSettingForm.ShowDialog(this);
         }
 
-        private void dragDropFile_click(object sender, DragEventArgs e)
+        private void DragDropFile_click(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -54,13 +54,14 @@ namespace BedWorker
                 foreach (string file in filesPath)
                 {
                     FileStream fs = new FileStream(file, FileMode.Open);
+                    
                     Console.WriteLine(file);
                     fs.Close();
                 }
             }
         }
 
-        private void dragEnterFile_click(object sender, DragEventArgs e)
+        private void DragEnterFile_click(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {

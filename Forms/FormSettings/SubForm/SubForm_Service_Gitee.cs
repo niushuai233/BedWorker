@@ -71,5 +71,9 @@ namespace BedWorker.Forms.FormSettings.SubForm
             XmlUtil.Obj2Xml<Configs>(CommonUtil.GetConfigLocation(), Configs.Configs_Ref);
         }
 
+        private void Gitee_OAuth_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

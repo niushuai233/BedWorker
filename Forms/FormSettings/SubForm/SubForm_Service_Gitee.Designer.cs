@@ -37,6 +37,7 @@
             this.button_gitee_confirm = new System.Windows.Forms.Button();
             this.button_gitee_cancel = new System.Windows.Forms.Button();
             this.button_gitee_apply = new System.Windows.Forms.Button();
+            this.button_gitee_oauth = new System.Windows.Forms.Button();
             this.textBox_gitee_repoAbsolutePath = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox_gitee_directory_path = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox_gitee_token = new BedWorker.Entity.Base.TextBoxExt();
@@ -131,6 +132,16 @@
             this.button_gitee_apply.UseVisualStyleBackColor = true;
             this.button_gitee_apply.Click += new System.EventHandler(this.GiteeApply_click);
             // 
+            // button_gitee_oauth
+            // 
+            this.button_gitee_oauth.Location = new System.Drawing.Point(324, 144);
+            this.button_gitee_oauth.Name = "button_gitee_oauth";
+            this.button_gitee_oauth.Size = new System.Drawing.Size(50, 32);
+            this.button_gitee_oauth.TabIndex = 19;
+            this.button_gitee_oauth.Text = "获取";
+            this.button_gitee_oauth.UseVisualStyleBackColor = true;
+            this.button_gitee_oauth.Click += new System.EventHandler(this.Gitee_OAuth_Click);
+            // 
             // textBox_gitee_repoAbsolutePath
             // 
             this.textBox_gitee_repoAbsolutePath.Enabled = false;
@@ -187,6 +198,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 352);
+            this.Controls.Add(this.button_gitee_oauth);
             this.Controls.Add(this.button_gitee_apply);
             this.Controls.Add(this.button_gitee_cancel);
             this.Controls.Add(this.button_gitee_confirm);
@@ -228,5 +240,6 @@
         private System.Windows.Forms.Button button_gitee_confirm;
         private System.Windows.Forms.Button button_gitee_cancel;
         private System.Windows.Forms.Button button_gitee_apply;
+        private System.Windows.Forms.Button button_gitee_oauth;
     }
 }

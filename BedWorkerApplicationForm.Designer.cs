@@ -87,7 +87,7 @@ namespace BedWorker
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
             this.关于ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.关于ToolStripMenuItem.Text = "关于";
-            this.关于ToolStripMenuItem.Click += new System.EventHandler(this.aboutMenuItem_click);
+            this.关于ToolStripMenuItem.Click += new System.EventHandler(this.AboutMenuItem_click);
             // 
             // openFileDialog1
             // 
@@ -110,8 +110,8 @@ namespace BedWorker
             this.Name = "BedWorkerApplicationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BedWorker v1.0 @niushuai233";
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.dragDropFile_click);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.dragEnterFile_click);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropFile_click);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnterFile_click);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
