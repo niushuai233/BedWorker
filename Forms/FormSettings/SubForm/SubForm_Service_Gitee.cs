@@ -23,6 +23,19 @@ namespace BedWorker.Forms.FormSettings.SubForm
         {
             parentForm = _this;
             InitializeComponent();
+            LoadGiteeConfig();
+        }
+
+        private void LoadGiteeConfig()
+        {
+            Configs.Configs_Ref = XmlUtil.Xml2Obj<Configs>(CommonUtil.GetConfigLocation());
+
+            this.textBox_gitee_username.Text = Configs.Configs_Ref.Gitee.Username;
+            this.textBox_gitee_repo.Text = Configs.Configs_Ref.Gitee.RepositoryName;
+            this.textBox_gitee_repoAbsolutePath.Text = Configs.Configs_Ref.Gitee.GetRepoAbsolutePath();
+            this.textBox_gitee_branch.Text = Configs.Configs_Ref.Gitee.Branch;
+            this.textBox_gitee_token.Text = Configs.Configs_Ref.Gitee.Token;
+            this.textBox_gitee_directory_path.Text = Configs.Configs_Ref.Gitee.Directory;
         }
 
         /// <summary>
