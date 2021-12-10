@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 
 namespace BedWorker.Utils
@@ -80,9 +81,9 @@ namespace BedWorker.Utils
             return "";
         }
 
-        public static string getRandomFilePath(string originFileName)
+        public static string GetRandomFilePath(string filePath)
         {
-            return DateUtil.GetFolderTodayDate() + "/" + DateUtil.GetFolderTodayTime() + "-" + GetRandomString(8) + "-" + originFileName;
+            return DateUtil.GetFolderTodayDate() + "/" + DateUtil.GetFolderTodayTime() + "-" + GetRandomString(8) + "-" + Path.GetFileName(filePath);
         }
 
         public static string GetRandomString(int length)

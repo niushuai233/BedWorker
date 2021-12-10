@@ -8,6 +8,8 @@ using BedWorker.Forms.FormSettings;
 using Newtonsoft.Json;
 using BedWorker.Entity;
 using System.Collections.Generic;
+using EasyHttp.Http;
+using BedWorker.Entity.Base;
 
 namespace BedWorker
 {
@@ -88,38 +90,17 @@ namespace BedWorker
 
         }
 
-        private void ServerUpload(string fileName)
+        private string ServerUpload(string filePath)
         {
             int server = 1;
             switch (server)
             {
                 case 1:
-                    GiteeUpload(fileName);
-                    break;
-                    
-            }
-        }
+                    return ApiGiteeUtil.GiteeUpload(filePath);
 
-        private void GiteeUpload(string fileName)
-        {
-            string repoName = Configs.Configs_Ref.Gitee.RepositoryName;
-            // 先检查仓库是否存在
-            if (!ApiGiteeUtil.RepoExist())
-            {
-                DialogResult dialogResult = MessageBox.Show("错误", "远端仓库不存在, 是否创建?", MessageBoxButtons.OKCancel);
-                if (dialogResult == DialogResult.OK)
-                {
-                    // 确认创建
-                    bool flag = ApiGiteeUtil.RepoCreate();
-                    if (flag)
-                    {
-                        MessageBox.Show("创建仓库成功");
-                    }
-
-                }
+                default:
+                    return null;
             }
-            // 构建参数 其中文件夹以日期保存 且文件名前添加随机8位字符串作为前缀
-            // 上传
         }
 
         private void GroupBoxMouseHover_Click(object sender, EventArgs e)

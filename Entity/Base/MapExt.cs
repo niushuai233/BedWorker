@@ -10,6 +10,11 @@ namespace BedWorker.Entity.Base
             return this.Count == 0;
         }
 
+        public bool IsNotNullOrEmpty()
+        {
+            return !IsNullOrEmpty();
+        }
+
         public void Put(string key, string value)
         {
             this.Add(key, value);

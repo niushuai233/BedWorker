@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BedWorker.Entity.Base;
 using BedWorker.Config;
 using EasyHttp.Http;
+using Newtonsoft.Json;
 
 namespace BedWorker.Utils
 {
@@ -13,13 +14,13 @@ namespace BedWorker.Utils
         {
             string url = string.Format(UrlConstant.Gitee_Repos_Exist, Gitee().Username, Gitee().RepositoryName);
 
-            MapExt repo = HttpUtil.Get<MapExt>(url, GetAccessTokenDict());
+            MapExt repo = HttpUtil.Get<MapExt>(url, GetAccessTokenMap());
             return repo;
         }
 
         public static bool RepoCreate()
         {
-            Dictionary<string, object> data = GetAccessTokenDict();
+            Dictionary<string, object> data = GetAccessTokenMap();
 
             // 仓库名称
             data.Add("name", Gitee().RepositoryName);
@@ -46,7 +47,7 @@ namespace BedWorker.Utils
         {
             string url = string.Format(UrlConstant.Gitee_Repos_Branches_Exist, Gitee().Username, Gitee().RepositoryName, Gitee().Branch);
 
-            Dictionary<string, object> branch = HttpUtil.Get<Dictionary<string, object>>(url, GetAccessTokenDict());
+            Dictionary<string, object> branch = HttpUtil.Get<Dictionary<string, object>>(url, GetAccessTokenMap());
             return branch;
         }
 
@@ -68,34 +69,52 @@ namespace BedWorker.Utils
             return null != branch;
         }
 
-        public static string FileCreate(string originFileName, string base64)
+
+        public static string GiteeUpload(string filePath)
         {
-            string fileUrl = "";
+            Gitee gitee = Configs.Configs_Ref.Gitee;
 
-            Dictionary<string, object> data = GetAccessTokenDict();
-            data.Add("content", base64);
+            // 构建参数 其中文件夹以日期保存 且文件名前添加随机8位字符串作为前缀
+            string path = gitee.Directory + "/" + CommonUtil.GetRandomFilePath(filePath);
+            // 替换url参数
+            string url = string.Format(UrlConstant.Gitee_Repos_Create_File, gitee.Username, gitee.RepositoryName, path);
 
-            string finalFilePath = CommonUtil.getRandomFilePath(originFileName);
+            MapExt data = GetAccessTokenMap();
+            // base64编码的文件
+            data.Put("content", FileUtil.EncodeBase64(filePath));
+            // 提交信息
+            data.Put("message", "feat: 添加图片: " + path);
+            // 提交分支
+            data.Put("branch", gitee.Branch);
 
-            string url = string.Format(UrlConstant.Gitee_Repos_Create_File, Gitee().Username, Gitee().RepositoryName, finalFilePath);
-            Dictionary<string, object> response = HttpUtil.Post<Dictionary<string, object>>(url, data, HttpContentTypes.ApplicationXWwwFormUrlEncoded);
+            // 上传
+            MapExt respMap = HttpUtil.Post<MapExt>(url, data, HttpContentTypes.ApplicationXWwwFormUrlEncoded);
 
-            Console.WriteLine(response.ToString());
+            if (respMap.IsNotNullOrEmpty())
+            {
+                string str = respMap.Get("content") + "";
+                MapExt content = JsonConvert.DeserializeObject<MapExt>(str);
 
-            return fileUrl;
-        } 
+                if (null != content && content.IsNotNullOrEmpty())
+                {
+                    return content.Get("download_url") + "";
+                }
+            }
 
+            return null;
+        }
         public static Gitee Gitee()
         {
             return Configs.Configs_Ref.Gitee; ;
         }
 
-        public static Dictionary<string, object> GetAccessTokenDict()
+        public static MapExt GetAccessTokenMap()
         {
-            Dictionary<string, object> dict = new Dictionary<string, object>();
-            dict.Add("access_token", Configs.Configs_Ref.Gitee.Token);
+            MapExt map = new MapExt();
+            map.Put("access_token", Configs.Configs_Ref.Gitee.Token);
 
-            return dict;
+            return map;
         }
+
     }
 }

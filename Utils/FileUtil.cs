@@ -20,7 +20,12 @@ namespace BedWorker.Utils
                 // string res = Encoding.UTF8.GetString(buffer);
                 return Convert.ToBase64String(buffer);
             }
+        }
 
+
+        public static string GetFileExt(string filePath)
+        {
+            return Path.GetExtension(filePath).ToLower();
         }
     }
 }
