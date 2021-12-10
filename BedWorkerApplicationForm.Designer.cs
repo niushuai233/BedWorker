@@ -102,7 +102,7 @@ namespace BedWorker
             this.groupBox_upload.Size = new System.Drawing.Size(664, 371);
             this.groupBox_upload.TabIndex = 1;
             this.groupBox_upload.TabStop = false;
-            this.groupBox_upload.MouseLeave += new System.EventHandler(this.GroupBoxMouseLeave_Click);
+            this.groupBox_upload.Click += new System.EventHandler(this.GroupBoxOpenFileDialog_Click);
             this.groupBox_upload.MouseHover += new System.EventHandler(this.GroupBoxMouseHover_Click);
             // 
             // pictureBox_index_upload
@@ -113,6 +113,7 @@ namespace BedWorker
             this.pictureBox_index_upload.Size = new System.Drawing.Size(200, 200);
             this.pictureBox_index_upload.TabIndex = 1;
             this.pictureBox_index_upload.TabStop = false;
+            this.pictureBox_index_upload.Click += new System.EventHandler(this.GroupBoxOpenFileDialog_Click);
             // 
             // label1
             // 
@@ -123,6 +124,7 @@ namespace BedWorker
             this.label1.Size = new System.Drawing.Size(365, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "点击或拖拽文件到此处上传";
+            this.label1.Click += new System.EventHandler(this.GroupBoxOpenFileDialog_Click);
             // 
             // BedWorkerApplicationForm
             // 

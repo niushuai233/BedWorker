@@ -7,6 +7,7 @@ using BedWorker.Utils;
 using BedWorker.Forms.FormSettings;
 using Newtonsoft.Json;
 using BedWorker.Entity;
+using System.Collections.Generic;
 
 namespace BedWorker
 {
@@ -74,9 +75,39 @@ namespace BedWorker
             }
         }
 
-        private void LabelButtonUpload_Click(object sender, EventArgs e)
+        private void GroupBoxOpenFileDialog_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("点我干啥");
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "图片文件|*.jpg;*.jpeg;*.png;*.bmp;*.gif|JPEG图片|*.jpg;*.jpeg|PNG图片|*.png|BMP图片|*.bmp|Gif图片|*.gif|TIF图片|*.tif";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // 已选择文件
+                this.ServerUpload(openFileDialog.FileName);
+
+                // 先判断仓库是否存在
+            }
+
+        }
+
+        private void ServerUpload(string fileName)
+        {
+            int server = 1;
+            switch (server)
+            {
+                case 1:
+                    GiteeUpload(fileName);
+                    break;
+                    
+            }
+        }
+
+        private void GiteeUpload(string fileName)
+        {
+            // 先检查仓库是否存在
+            // 再检查分支是否存在
+            // 构建参数 其中文件夹以日期保存 且文件名前添加随机8位字符串作为前缀
+            // 上传
         }
 
         private void GroupBoxMouseHover_Click(object sender, EventArgs e)

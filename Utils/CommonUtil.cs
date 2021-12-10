@@ -80,6 +80,34 @@ namespace BedWorker.Utils
             return "";
         }
 
+        public static string getRandomFilePath(string originFileName)
+        {
+            return DateUtil.GetFolderTodayDate() + "/" + DateUtil.GetFolderTodayTime() + "-" + GetRandomString(8) + "-" + originFileName;
+        }
+
+        public static string GetRandomString(int length)
+        {
+            string result = "";
+            for (int i = 0; i < length; i++)
+            {
+                bool _tmp = true;
+                while (_tmp)
+                {
+                    // 随机一个数字
+                    int randomIntValue = new Random(Guid.NewGuid().GetHashCode()).Next(48, 123);
+
+                    if ((randomIntValue >=48 && randomIntValue <= 57) // 数字
+                        || (randomIntValue >= 65 && randomIntValue <= 90) // 大写字母
+                        || (randomIntValue >= 97 && randomIntValue <= 122)) // 小写字母
+                    {
+                        result += (char)randomIntValue;
+                        _tmp = false;
+                    }
+                }
+            }
+            return result;
+        }
+
         public static Dictionary<string, object> Object2Dict<T>(T obj, bool ignoreGetMethod = false)
         {
             if (obj is Dictionary<string, object>)
