@@ -73,5 +73,21 @@ namespace BedWorker
                 e.Effect = DragDropEffects.None;
             }
         }
+
+        private void LabelButtonUpload_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("点我干啥");
+        }
+
+        private void GroupBoxMouseHover_Click(object sender, EventArgs e)
+        {
+            this.groupBox_upload.Cursor = Cursors.Hand;
+            this.groupBox_upload.BackColor = System.Drawing.Color.Gray;
+        }
+
+        private void GroupBoxMouseLeave_Click(object sender, EventArgs e)
+        {
+            this.groupBox_upload.BackColor = System.Drawing.Color.Empty;
+        }
     }
 }
