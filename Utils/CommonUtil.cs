@@ -46,6 +46,20 @@ namespace BedWorker.Utils
             return proxyAddress.Port;
         }
 
+        public static string Data2GetQuery(Dictionary<string, object> dict, bool startWithQuestion = true)
+        {
+            string res = "";
+            if (startWithQuestion)
+            {
+                res += "?";
+            }
+            foreach (var item in dict)
+            {
+                res += item.Key + "=" + item.Value + "&";
+            }
+            return res + "time=" + 1;
+        }
+
         public static string GetValueByKeyFromUrl(string url, string code)
         {
             Uri uri = new Uri(url);
@@ -68,6 +82,11 @@ namespace BedWorker.Utils
 
         public static Dictionary<string, object> Object2Dict<T>(T obj, bool ignoreGetMethod = false)
         {
+            if (obj is Dictionary<string, object>)
+            {
+                return (Dictionary<string, object>)Convert.ChangeType(obj, typeof(Dictionary<string, object>));
+            }
+
             Dictionary<string, object> dictionary = new Dictionary<string, object>();
 
             Type type = obj.GetType();

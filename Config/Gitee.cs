@@ -1,4 +1,4 @@
-﻿using BedWorker.Entity;
+﻿using BedWorker.Entity.Gitee;
 
 namespace BedWorker.Config
 {
@@ -34,6 +34,7 @@ namespace BedWorker.Config
         public string Directory { get; set; }
 
         public GiteeAuthResponse AuthResponse { get; set; }
+        public GiteeUserInfo GiteeUserInfo { get; set; }
 
         public Gitee()
         {
@@ -44,6 +45,7 @@ namespace BedWorker.Config
             Token = "";
             Directory = "/img";
             AuthResponse = new GiteeAuthResponse();
+            GiteeUserInfo = new GiteeUserInfo();
         }
 
         public string GetRepoAbsolutePath()

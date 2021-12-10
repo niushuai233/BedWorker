@@ -93,9 +93,9 @@ namespace BedWorker.Forms.FormSettings.SubForm
         private void Gitee_OAuth_Click(object sender, EventArgs e)
         {
             // 使用默认浏览器打开应用地址
-            System.Diagnostics.Process.Start(string.Format(UrlConstant.Url_Gitee_GetCode, CommonConstant.GITEE_CLIENT_ID, CommonConstant.GITEE_REDIRECT_URI));
+            System.Diagnostics.Process.Start(string.Format(UrlConstant.Gitee_GetCode, CommonConstant.GITEE_CLIENT_ID, CommonConstant.GITEE_REDIRECT_URI));
             // 开启httpserver 用于回调
-            HttpListener httpListener = HttpServerUtil.StartListenServer(UrlConstant.Url_HttpServer);
+            HttpListener httpListener = HttpServerUtil.StartListenServer(UrlConstant.HttpServer);
 
             CancellationTokenSource cancelToken = new CancellationTokenSource();
 
@@ -132,6 +132,20 @@ namespace BedWorker.Forms.FormSettings.SubForm
             });
 
             task.Wait();
+
+            // 获取到token后 尝试获取用户名
+            string token = Configs.Configs_Ref.Gitee.Token;
+            if (!string.IsNullOrEmpty(token)) { 
+                Dictionary<string, object> result = new Dictionary<string, object>();
+                result.Add("access_token", token);
+                GiteeUserInfo userInfo = HttpUtil.Get<GiteeUserInfo>(UrlConstant.Gitee_Userinfo, result);
+
+                if (userInfo != null)
+                {
+                    Configs.Configs_Ref.Gitee.GiteeUserInfo = userInfo;
+                    this.textBox_gitee_username.Text = userInfo.Login;
+                }
+            }
         }
 
         private void AuthWait(HttpListener httpListener, CancellationTokenSource cancelToken)
@@ -180,7 +194,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
             authRequest.code = code;
 
             // 需要替换内容
-            string url = string.Format(UrlConstant.Url_Gitee_Code2Token, code, authRequest.client_id, authRequest.redirect_uri, authRequest.client_secret);
+            string url = string.Format(UrlConstant.Gitee_Code2Token, code, authRequest.client_id, authRequest.redirect_uri, authRequest.client_secret);
 
             GiteeAuthResponse response = HttpUtil.Post<GiteeAuthResponse>(url, authRequest, HttpContentTypes.ApplicationXWwwFormUrlEncoded);
 

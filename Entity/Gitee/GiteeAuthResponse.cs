@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace BedWorker.Entity
+namespace BedWorker.Entity.Gitee
 {
     public class GiteeAuthResponse
     {

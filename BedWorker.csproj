@@ -88,6 +88,7 @@
     <Compile Include="Entity\Enums\ToolSetNameEnum.cs" />
     <Compile Include="Entity\Gitee\GiteeAuthRequest.cs" />
     <Compile Include="Entity\Gitee\GiteeAuthResponse.cs" />
+    <Compile Include="Entity\Gitee\GiteeUserInfo.cs" />
     <Compile Include="Forms\FormSettings\Form_Settings.cs">
       <SubType>Form</SubType>
     </Compile>
