@@ -21,5 +21,18 @@ namespace BedWorker.Utils
         /// 默认代理端口
         /// </summary>
         public static int Default_Proxy_Port = 7890;
+
+        public static string GITEE_REDIRECT_URI = "http://localhost:65501/BedWorker/login";
+
+        /// <summary>
+        /// gitee 第三方应用id
+        /// </summary>
+        public static string GITEE_CLIENT_ID = "950e8a9fd2ef1121dfb84d2d1041ccb7cdb1aed4c10bf87bf66ddd0986d24cd9";
+        /// <summary>
+        /// gitee 第三方应用秘钥
+        /// </summary>
+        public static string GITEE_CLIENT_SECRET = "3e6f0d911ccf293bd89ceed01f4812570f4e56442136966347683ee10f03124a";
+
+        public const string GITEE_AUTHORIZATION_CODE = "authorization_code";
     }
 }

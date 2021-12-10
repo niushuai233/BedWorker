@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             this.textBox_gitee_branch = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox_gitee_repo = new BedWorker.Entity.Base.TextBoxExt();
             this.textBox_gitee_username = new BedWorker.Entity.Base.TextBoxExt();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -193,6 +195,11 @@
             this.textBox_gitee_username.Size = new System.Drawing.Size(125, 26);
             this.textBox_gitee_username.TabIndex = 3;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tag = "ffx";
+            // 
             // SubForm_Service_Gitee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -241,5 +248,6 @@
         private System.Windows.Forms.Button button_gitee_cancel;
         private System.Windows.Forms.Button button_gitee_apply;
         private System.Windows.Forms.Button button_gitee_oauth;
+        private System.Windows.Forms.Timer timer1;
     }
 }

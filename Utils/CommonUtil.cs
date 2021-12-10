@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace BedWorker.Utils
 {
@@ -42,6 +44,52 @@ namespace BedWorker.Utils
                 return 0;
             }
             return proxyAddress.Port;
+        }
+
+        public static string GetValueByKeyFromUrl(string url, string code)
+        {
+            Uri uri = new Uri(url);
+
+            string[] paramArr = uri.Query.Split('?');
+            if (null != paramArr && 2 == paramArr.Length)
+            {
+                foreach (var item in paramArr)
+                {
+                    string[] keyValue = item.Split('=');
+                    if (keyValue[0].Equals(code))
+                    {
+                        return keyValue[1];
+                    }
+                }
+            }
+
+            return "";
+        }
+
+        public static Dictionary<string, object> Object2Dict<T>(T obj, bool ignoreGetMethod = false)
+        {
+            Dictionary<string, object> dictionary = new Dictionary<string, object>();
+
+            Type type = obj.GetType();
+            PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static |BindingFlags.Instance);
+
+            foreach (var property in properties)
+            {
+                MethodInfo method = property.GetGetMethod();
+
+                if (null == method && !ignoreGetMethod)
+                {
+                    // 设null
+                    dictionary.Add(property.Name, null);
+                } 
+                else
+                {
+                    // 获取实际值
+                    dictionary.Add(property.Name, method.Invoke(obj, new object[] { }));
+                }
+            }
+
+            return dictionary;
         }
     }
 }

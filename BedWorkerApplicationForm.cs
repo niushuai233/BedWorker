@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using BedWorker.Config;
 using BedWorker.Utils;
 using BedWorker.Forms.FormSettings;
+using Newtonsoft.Json;
+using BedWorker.Entity;
 
 namespace BedWorker
 {
@@ -25,7 +27,6 @@ namespace BedWorker
                 Console.WriteLine("配置文件不存在, 新建. | " + configFilePath);
                 XmlUtil.Obj2Xml<Configs>(configFilePath, Configs.Configs_Ref);
             }
-            
         }
 
         private void AboutMenuItem_click(object sender, EventArgs e)
