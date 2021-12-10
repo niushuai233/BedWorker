@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using EasyHttp.Http;
 using Newtonsoft.Json;
 
+using BedWorker.Entity.Base;
+
 namespace BedWorker.Utils
 {
     public class HttpUtil
@@ -19,7 +21,9 @@ namespace BedWorker.Utils
             HttpResponse response = client.Post(url, data, contentType);
 
             string res = response.RawText;
-            Console.WriteLine("post request url [{0}], res [{1}]", url, res);
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("post request url [{0}]\nres [{1}]", url, res);
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////");
             try
             {
                 return JsonConvert.DeserializeObject<T>(res);
@@ -45,7 +49,9 @@ namespace BedWorker.Utils
             HttpResponse response = client.Get(url);
 
             string res = response.RawText;
-            Console.WriteLine("get request url [{0}], res [{1}]", url, res);
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////");
+            Console.WriteLine("get request url [{0}]\nres [{1}]", url, res);
+            Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////");
             try
             {
                 return JsonConvert.DeserializeObject<T>(res);
@@ -55,6 +61,11 @@ namespace BedWorker.Utils
                 Console.WriteLine("反序列化对象失败: {0} | {1}", res, e.Message);
                 return default;
             }
+        }
+
+        private static MapExt NullMapExt()
+        {
+            return new MapExt();
         }
     }
 }

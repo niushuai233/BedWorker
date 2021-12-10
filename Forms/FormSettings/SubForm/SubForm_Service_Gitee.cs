@@ -87,6 +87,21 @@ namespace BedWorker.Forms.FormSettings.SubForm
             // 完整地址
             Configs.Configs_Ref.Gitee.RepoAbsolutePath = Configs.Configs_Ref.Gitee.GetRepoAbsolutePath();
             this.textBox_gitee_repoAbsolutePath.Text = Configs.Configs_Ref.Gitee.GetRepoAbsolutePath();
+
+            if (!ApiGiteeUtil.RepoExist())
+            {
+                DialogResult dialogResult = MessageBox.Show("远端仓库不存在, 是否创建?", "错误", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK)
+                {
+                    // 确认创建
+                    bool flag = ApiGiteeUtil.RepoCreate();
+                    if (flag)
+                    {
+                        MessageBox.Show("创建仓库成功");
+                    }
+                }
+            }
+
             XmlUtil.Obj2Xml<Configs>(CommonUtil.GetConfigLocation(), Configs.Configs_Ref);
         }
 

@@ -21,7 +21,7 @@
         /// <summary>
         /// 创建仓库
         /// </summary>
-        public static string Gitee_Repos = "https://gitee.com/api/v5/user/repos";
+        public static string Gitee_Repos_Create = "https://gitee.com/api/v5/user/repos";
         /// <summary>
         /// 仓库是否存在 https://gitee.com/api/v5/repos/{owner}/{repo}
         /// </summary>

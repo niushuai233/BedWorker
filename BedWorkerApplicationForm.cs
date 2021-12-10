@@ -84,8 +84,6 @@ namespace BedWorker
             {
                 // 已选择文件
                 this.ServerUpload(openFileDialog.FileName);
-
-                // 先判断仓库是否存在
             }
 
         }
@@ -104,8 +102,22 @@ namespace BedWorker
 
         private void GiteeUpload(string fileName)
         {
+            string repoName = Configs.Configs_Ref.Gitee.RepositoryName;
             // 先检查仓库是否存在
-            // 再检查分支是否存在
+            if (!ApiGiteeUtil.RepoExist())
+            {
+                DialogResult dialogResult = MessageBox.Show("错误", "远端仓库不存在, 是否创建?", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK)
+                {
+                    // 确认创建
+                    bool flag = ApiGiteeUtil.RepoCreate();
+                    if (flag)
+                    {
+                        MessageBox.Show("创建仓库成功");
+                    }
+
+                }
+            }
             // 构建参数 其中文件夹以日期保存 且文件名前添加随机8位字符串作为前缀
             // 上传
         }
