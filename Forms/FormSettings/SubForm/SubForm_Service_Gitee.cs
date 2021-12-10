@@ -59,14 +59,12 @@ namespace BedWorker.Forms.FormSettings.SubForm
             {
                 _directory = "/" + _directory;
             }
-            Configs.Configs_Ref.Gitee = new Gitee()
-            {
-                Username = this.textBox_gitee_username.Text,
-                RepositoryName = this.textBox_gitee_repo.Text,
-                Branch = _branch,
-                Token = this.textBox_gitee_token.Text,
-                Directory = _directory
-            };
+
+            Configs.Configs_Ref.Gitee.Username  = this.textBox_gitee_username.Text;
+            Configs.Configs_Ref.Gitee.RepositoryName = this.textBox_gitee_repo.Text;
+            Configs.Configs_Ref.Gitee.Branch = _branch;
+            Configs.Configs_Ref.Gitee.Token = this.textBox_gitee_token.Text;
+            Configs.Configs_Ref.Gitee.Directory = _directory;
 
             // 如果branch为null 默认为master
             this.textBox_gitee_branch.Text = _branch;
@@ -134,14 +132,13 @@ namespace BedWorker.Forms.FormSettings.SubForm
             if (!string.IsNullOrEmpty(code))
             {
                 // code存在 拿code换token
-                string token = this.Code2Token(code);
+                GiteeAuthResponse token = this.Code2Token(code);
 
                 // System.InvalidOperationException: 线程间操作无效: 从不是创建控件“textBox_gitee_token”的线程访问它。
                 Action<string> actionDelegate = delegate(string _value) { this.textBox_gitee_token.Text = _value; };
-                this.textBox_gitee_token.BeginInvoke(actionDelegate, token);
-                Configs.Configs_Ref.Gitee.Token = token;
-                // 重写到xml中
-                XmlUtil.Obj2Xml<Configs>(CommonUtil.GetConfigLocation(), Configs.Configs_Ref);
+                this.textBox_gitee_token.BeginInvoke(actionDelegate, token.AccessToken);
+                Configs.Configs_Ref.Gitee.AuthResponse = token;
+                Configs.Configs_Ref.Gitee.Token = token.AccessToken;
             }
 
             HttpListenerResponse response = context.Response;
@@ -160,7 +157,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
             Console.WriteLine("Http end...");
         }
 
-        private string Code2Token(string code)
+        private GiteeAuthResponse Code2Token(string code)
         {
             GiteeAuthRequest authRequest = new GiteeAuthRequest();
             authRequest.grant_type = CommonConstant.GITEE_AUTHORIZATION_CODE;
@@ -176,7 +173,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
 
             if (null != response)
             {
-                return response.AccessToken;
+                return response;
             }
             return null;
         }

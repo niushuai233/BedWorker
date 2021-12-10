@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BedWorker.Entity;
 
 namespace BedWorker.Config
 {
@@ -37,6 +33,8 @@ namespace BedWorker.Config
         /// </summary>
         public string Directory { get; set; }
 
+        public GiteeAuthResponse AuthResponse { get; set; }
+
         public Gitee()
         {
             Host = "https://gitee.com";
@@ -45,6 +43,7 @@ namespace BedWorker.Config
             Branch = "master";
             Token = "";
             Directory = "/img";
+            AuthResponse = new GiteeAuthResponse();
         }
 
         public string GetRepoAbsolutePath()
