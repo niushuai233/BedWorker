@@ -82,12 +82,23 @@ namespace BedWorker
         private void GroupBoxMouseHover_Click(object sender, EventArgs e)
         {
             this.groupBox_upload.Cursor = Cursors.Hand;
-            this.groupBox_upload.BackColor = System.Drawing.Color.Gray;
         }
 
         private void GroupBoxMouseLeave_Click(object sender, EventArgs e)
         {
-            this.groupBox_upload.BackColor = System.Drawing.Color.Empty;
+            if (!IsAboveGroupBox(sender as GroupBox))
+            {
+                this.groupBox_upload.BackColor = System.Drawing.Color.Empty;
+            }
+        }
+
+        private bool IsAboveGroupBox(GroupBox gb)
+        {
+            System.Drawing.Point cursorPos = PointToClient(Cursor.Position);
+            bool resultX = (cursorPos.X > gb.Location.X && cursorPos.X < gb.Location.X + gb.Size.Width) ? true : false;
+            bool resultY = (cursorPos.Y > gb.Location.Y && cursorPos.Y < gb.Location.Y + gb.Size.Height) ? true : false;
+
+            return resultX && resultY;
         }
     }
 }

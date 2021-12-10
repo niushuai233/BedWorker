@@ -95,8 +95,8 @@ namespace BedWorker
             // 
             // groupBox_upload
             // 
-            this.groupBox_upload.Controls.Add(this.label1);
             this.groupBox_upload.Controls.Add(this.pictureBox_index_upload);
+            this.groupBox_upload.Controls.Add(this.label1);
             this.groupBox_upload.Location = new System.Drawing.Point(12, 32);
             this.groupBox_upload.Name = "groupBox_upload";
             this.groupBox_upload.Size = new System.Drawing.Size(664, 371);
@@ -117,7 +117,7 @@ namespace BedWorker
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(161, 295);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(365, 39);
