@@ -15,7 +15,7 @@ namespace BedWorker.Entity.Base
             return !IsNullOrEmpty();
         }
 
-        public void Put(string key, string value)
+        public void Put(string key, object value)
         {
             this.Add(key, value);
         }
@@ -26,7 +26,7 @@ namespace BedWorker.Entity.Base
             {
                 return this[key];
             } 
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

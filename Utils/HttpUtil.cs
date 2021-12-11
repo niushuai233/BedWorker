@@ -13,12 +13,12 @@ namespace BedWorker.Utils
 
        public static T Post<T>(string url, object data, string contentType)
         {
-            // data转dictionary 防止easyhttp转换为帕斯卡命名
-            data = CommonUtil.Object2Dict(data);
+            // data转mapExt 防止easyhttp转换为帕斯卡命名
+            MapExt _data = CommonUtil.Object2Map(data);
 
             HttpClient client = new HttpClient();
 
-            HttpResponse response = client.Post(url, data, contentType);
+            HttpResponse response = client.Post(url, _data, contentType);
 
             string res = response.RawText;
             Console.WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////");
@@ -37,10 +37,10 @@ namespace BedWorker.Utils
 
         public static T Get<T>(string url, object data)
         {
-            // data转dictionary 防止easyhttp转换为帕斯卡命名
-            Dictionary<string, object> dict = CommonUtil.Object2Dict(data);
+            // data转MapExt 防止easyhttp转换为帕斯卡命名
+            MapExt _data = CommonUtil.Object2Map(data);
 
-            string _query = CommonUtil.Data2GetQuery(dict);
+            string _query = CommonUtil.Data2GetQuery(_data);
 
             HttpClient client = new HttpClient();
 

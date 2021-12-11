@@ -13,6 +13,7 @@ using EasyHttp.Http;
 using System.Collections.Generic;
 using BedWorker.Entity;
 using System.Threading;
+using BedWorker.Entity.Base;
 
 namespace BedWorker.Forms.FormSettings.SubForm
 {
@@ -151,8 +152,8 @@ namespace BedWorker.Forms.FormSettings.SubForm
             // 获取到token后 尝试获取用户名
             string token = Configs.Configs_Ref.Gitee.Token;
             if (!string.IsNullOrEmpty(token)) { 
-                Dictionary<string, object> result = new Dictionary<string, object>();
-                result.Add("access_token", token);
+                MapExt result = new MapExt();
+                result.Put("access_token", token);
                 GiteeUserInfo userInfo = HttpUtil.Get<GiteeUserInfo>(UrlConstant.Gitee_Userinfo, result);
 
                 if (userInfo != null)

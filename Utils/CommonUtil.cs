@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedWorker.Entity.Base;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -47,7 +48,7 @@ namespace BedWorker.Utils
             return proxyAddress.Port;
         }
 
-        public static string Data2GetQuery(Dictionary<string, object> dict, bool startWithQuestion = true)
+        public static string Data2GetQuery(MapExt dict, bool startWithQuestion = true)
         {
             string res = "";
             if (startWithQuestion)
@@ -109,14 +110,14 @@ namespace BedWorker.Utils
             return result;
         }
 
-        public static Dictionary<string, object> Object2Dict<T>(T obj, bool ignoreGetMethod = false)
+        public static MapExt Object2Map<T>(T obj, bool ignoreGetMethod = false)
         {
-            if (obj is Dictionary<string, object>)
+            if (obj is Dictionary<string, object> || obj is MapExt)
             {
-                return (Dictionary<string, object>)Convert.ChangeType(obj, typeof(Dictionary<string, object>));
+                return (MapExt)Convert.ChangeType(obj, typeof(MapExt));
             }
 
-            Dictionary<string, object> dictionary = new Dictionary<string, object>();
+            MapExt map = new MapExt();
 
             Type type = obj.GetType();
             PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static |BindingFlags.Instance);
@@ -128,16 +129,16 @@ namespace BedWorker.Utils
                 if (null == method && !ignoreGetMethod)
                 {
                     // 设null
-                    dictionary.Add(property.Name, null);
+                    map.Put(property.Name, null);
                 } 
                 else
                 {
                     // 获取实际值
-                    dictionary.Add(property.Name, method.Invoke(obj, new object[] { }));
+                    map.Put(property.Name, method.Invoke(obj, new object[] { }));
                 }
             }
 
-            return dictionary;
+            return map;
         }
     }
 }

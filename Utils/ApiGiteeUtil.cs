@@ -20,7 +20,7 @@ namespace BedWorker.Utils
 
         public static bool RepoCreate()
         {
-            Dictionary<string, object> data = GetAccessTokenMap();
+            MapExt data = GetAccessTokenMap();
 
             // 仓库名称
             data.Add("name", Gitee().RepositoryName);
@@ -32,7 +32,7 @@ namespace BedWorker.Utils
             data.Add("license_template", "GPL-3.0");
 
             MapExt resp = HttpUtil.Post<MapExt>(UrlConstant.Gitee_Repos_Create, data, HttpContentTypes.ApplicationXWwwFormUrlEncoded);
-            return (resp != null && null != resp["id"]) ? true : false;
+            return (resp != null && null != resp.Get("id"));
         }
 
 
@@ -43,17 +43,17 @@ namespace BedWorker.Utils
         }
 
 
-        public static Dictionary<string, object> BranchInfo()
+        public static MapExt BranchInfo()
         {
             string url = string.Format(UrlConstant.Gitee_Repos_Branches_Exist, Gitee().Username, Gitee().RepositoryName, Gitee().Branch);
 
-            Dictionary<string, object> branch = HttpUtil.Get<Dictionary<string, object>>(url, GetAccessTokenMap());
+            MapExt branch = HttpUtil.Get<MapExt>(url, GetAccessTokenMap());
             return branch;
         }
 
         public static string BranchDefault()
         {
-            Dictionary<string, object> repo = BranchInfo();
+            MapExt repo = BranchInfo();
             if (null != repo)
             {
                 return repo["default_branch"].ToString();
@@ -64,7 +64,7 @@ namespace BedWorker.Utils
 
         public static bool BranchExist()
         {
-            Dictionary<string, object> branch = BranchInfo();
+            MapExt branch = BranchInfo();
 
             return null != branch;
         }
