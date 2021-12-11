@@ -2,16 +2,12 @@
 using System.Net;
 using System.Windows.Forms;
 
-using Newtonsoft.Json;
-
 using BedWorker.Config;
 using BedWorker.Utils;
 using BedWorker.Entity.Gitee;
 using System.Threading.Tasks;
 using System.IO;
 using EasyHttp.Http;
-using System.Collections.Generic;
-using BedWorker.Entity;
 using System.Threading;
 using BedWorker.Entity.Base;
 
@@ -19,6 +15,7 @@ namespace BedWorker.Forms.FormSettings.SubForm
 {
     public partial class SubForm_Service_Gitee : Form
     {
+        private bool applyOkFlag = false;
         public Form_Settings parentForm = null;
         public SubForm_Service_Gitee(Form_Settings _this)
         {
@@ -47,7 +44,10 @@ namespace BedWorker.Forms.FormSettings.SubForm
         private void GiteeConfirm_click(object sender, EventArgs e)
         {
             this.GiteeApply_click(sender, e);
-            this.GiteeCancel_click(sender, e);
+            if (applyOkFlag)
+            { 
+                this.GiteeCancel_click(sender, e);
+            }
         }
 
         /// <summary>
@@ -67,6 +67,13 @@ namespace BedWorker.Forms.FormSettings.SubForm
         /// <param name="e"></param>
         private void GiteeApply_click(object sender, EventArgs e)
         {
+            applyOkFlag = false;
+
+            if (!this.ValidateData())
+            {
+                return;
+            }
+
             string _branch = string.IsNullOrEmpty(this.textBox_gitee_branch.Text) ? "master" : this.textBox_gitee_branch.Text;
             string _directory = string.IsNullOrEmpty(this.textBox_gitee_directory_path.Text) ? "/img" : this.textBox_gitee_directory_path.Text;
             if (!_directory.StartsWith("/"))
@@ -95,15 +102,35 @@ namespace BedWorker.Forms.FormSettings.SubForm
                 if (dialogResult == DialogResult.OK)
                 {
                     // 确认创建
-                    bool flag = ApiGiteeUtil.RepoCreate();
-                    if (flag)
+                    MapExt resp = ApiGiteeUtil.RepoCreate();
+                    if (resp != null && null != resp.Get("id"))
                     {
                         MessageBox.Show("创建仓库成功");
+                    } else
+                    {
+                        MessageBox.Show("创建仓库失败");
+                        return;
                     }
                 }
             }
 
             XmlUtil.Obj2Xml<Configs>(CommonUtil.GetConfigLocation(), Configs.Configs_Ref);
+            applyOkFlag = true;
+        }
+
+        private bool ValidateData()
+        {
+            if (string.IsNullOrEmpty(this.textBox_gitee_username.Text.Trim()))
+            {
+                MessageBox.Show("用户名不能为空", "参数不合法");
+                return false;
+            }
+            if (string.IsNullOrEmpty(this.textBox_gitee_repo.Text.Trim()))
+            {
+                MessageBox.Show("仓库名不能为空", "参数不合法");
+                return false;
+            }
+            return true;
         }
 
         private void Gitee_OAuth_Click(object sender, EventArgs e)

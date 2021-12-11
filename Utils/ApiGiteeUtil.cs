@@ -18,7 +18,7 @@ namespace BedWorker.Utils
             return repo;
         }
 
-        public static bool RepoCreate()
+        public static MapExt RepoCreate()
         {
             MapExt data = GetAccessTokenMap();
 
@@ -32,14 +32,14 @@ namespace BedWorker.Utils
             data.Add("license_template", "GPL-3.0");
 
             MapExt resp = HttpUtil.Post<MapExt>(UrlConstant.Gitee_Repos_Create, data, HttpContentTypes.ApplicationXWwwFormUrlEncoded);
-            return (resp != null && null != resp.Get("id"));
+            return resp;
         }
 
 
         public static bool RepoExist()
         {
             MapExt repo = RepoInfo();
-            return !repo.IsNullOrEmpty() && null != repo.Get("id");
+            return repo.IsNotNullOrEmpty() && null != repo.Get("id");
         }
 
 
