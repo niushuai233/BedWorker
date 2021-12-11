@@ -24,6 +24,9 @@ namespace BedWorker
             {
                 Console.WriteLine("配置文件不存在, 新建. | " + configFilePath);
                 XmlUtil.Obj2Xml<Configs>(configFilePath, Configs.Configs_Ref);
+            } else
+            {
+                Configs.Configs_Ref = XmlUtil.Xml2Obj<Configs>(configFilePath);
             }
         }
 
