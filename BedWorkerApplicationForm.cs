@@ -85,7 +85,10 @@ namespace BedWorker
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 // 已选择文件
-                this.ServerUpload(openFileDialog.FileName);
+                string uploadFilePath = this.ServerUpload(openFileDialog.FileName);
+
+                // MessageBox.Show(uploadFilePath);
+                this.textBox_lastUploadUrl.Text = uploadFilePath;
             }
 
         }

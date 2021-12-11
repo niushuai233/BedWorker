@@ -72,6 +72,18 @@ namespace BedWorker.Utils
 
         public static string GiteeUpload(string filePath)
         {
+            string x2 = "{'content':{'name':'145747-kxbg7B2t-黄瓶子.jpg','path':'img/2021/12/11/145747-kxbg7B2t-黄瓶子.jpg','size':801212,'sha':'41f200f87352c929a1ce5999546b6b9bb8508e71','type':'file','url':'https://gitee.com/api/v5/repos/niushuai233/bedworker_test/contents/img/2021/12/11/145747-kxbg7B2t-黄瓶子.jpg','html_url':'https://gitee.com/niushuai233/bedworker_test/blob/master/img/2021/12/11/145747-kxbg7B2t-黄瓶子.jpg','download_url':'https://gitee.com/niushuai233/bedworker_test/raw/master/img/2021/12/11/145747-kxbg7B2t-黄瓶子.jpg','_links':{'self':'https://gitee.com/api/v5/repos/niushuai233/bedworker_test/contents/img/2021/12/11/145747-kxbg7B2t-黄瓶子.jpg','html':'https://gitee.com/niushuai233/bedworker_test/blob/master/img/2021/12/11/145747-kxbg7B2t-黄瓶子.jpg'}},'commit':{'sha':'1697ad7b7dd9f8489344390d041e5a9815a52fc9','author':{'name':'niushuai','date':'2021-12-11T06:57:47+00:00','email':'niushuai951101@gmail.com'},'committer':{'name':'Gitee','date':'2021-12-11T06:57:47+00:00','email':'noreply@gitee.com'},'message':'feat: 添加图片: /img/2021/12/11/145747-kxbg7B2t-黄瓶子.jpg','tree':{'sha':'dbf6d6eb777ca928b4158d0ac25e57e935e8e8d4','url':'https://gitee.com/api/v5/repos/niushuai233/bedworker_test/git/trees/dbf6d6eb777ca928b4158d0ac25e57e935e8e8d4'},'parents':[{'sha':'5acd63d27c7dc3c1da61321b6f6e1b192ba992a9','url':'https://gitee.com/api/v5/repos/niushuai233/bedworker_test/commits/5acd63d27c7dc3c1da61321b6f6e1b192ba992a9'}]}}";
+            if (x2.Length > 1)
+            {
+                string x23 = JsonConvert.DeserializeObject<MapExt>(x2).Get("content") + "";
+                MapExt contentx23 = JsonConvert.DeserializeObject<MapExt>(x23);
+
+                if (null != contentx23 && contentx23.IsNotNullOrEmpty())
+                {
+                    return contentx23.Get("download_url") + "";
+                }
+                return null;
+            }
             Gitee gitee = Configs.Configs_Ref.Gitee;
 
             // 构建参数 其中文件夹以日期保存 且文件名前添加随机8位字符串作为前缀

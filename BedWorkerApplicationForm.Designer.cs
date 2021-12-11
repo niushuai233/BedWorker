@@ -39,6 +39,9 @@ namespace BedWorker
             this.groupBox_upload = new System.Windows.Forms.GroupBox();
             this.pictureBox_index_upload = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox_lastUploadUrl = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mainMenuStrip.SuspendLayout();
             this.groupBox_upload.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_index_upload)).BeginInit();
@@ -68,7 +71,7 @@ namespace BedWorker
             // AppSettingsToolStripMenuItem
             // 
             this.AppSettingsToolStripMenuItem.Name = "AppSettingsToolStripMenuItem";
-            this.AppSettingsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.AppSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AppSettingsToolStripMenuItem.Text = "工具设置";
             this.AppSettingsToolStripMenuItem.Click += new System.EventHandler(this.ToolSettingsMenuItem_click);
             // 
@@ -77,7 +80,7 @@ namespace BedWorker
             this.BedServerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.giteeToolStripMenuItem});
             this.BedServerToolStripMenuItem.Name = "BedServerToolStripMenuItem";
-            this.BedServerToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.BedServerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.BedServerToolStripMenuItem.Text = "图床设置";
             // 
             // giteeToolStripMenuItem
@@ -97,18 +100,20 @@ namespace BedWorker
             // 
             this.groupBox_upload.Controls.Add(this.pictureBox_index_upload);
             this.groupBox_upload.Controls.Add(this.label1);
-            this.groupBox_upload.Location = new System.Drawing.Point(12, 32);
+            this.groupBox_upload.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.groupBox_upload.Location = new System.Drawing.Point(12, 72);
             this.groupBox_upload.Name = "groupBox_upload";
-            this.groupBox_upload.Size = new System.Drawing.Size(664, 371);
+            this.groupBox_upload.Size = new System.Drawing.Size(664, 286);
             this.groupBox_upload.TabIndex = 1;
             this.groupBox_upload.TabStop = false;
+            this.groupBox_upload.Text = "上传区";
             this.groupBox_upload.Click += new System.EventHandler(this.GroupBoxOpenFileDialog_Click);
             this.groupBox_upload.MouseHover += new System.EventHandler(this.GroupBoxMouseHover_Click);
             // 
             // pictureBox_index_upload
             // 
             this.pictureBox_index_upload.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_index_upload.Image")));
-            this.pictureBox_index_upload.Location = new System.Drawing.Point(232, 32);
+            this.pictureBox_index_upload.Location = new System.Drawing.Point(232, 23);
             this.pictureBox_index_upload.Name = "pictureBox_index_upload";
             this.pictureBox_index_upload.Size = new System.Drawing.Size(200, 200);
             this.pictureBox_index_upload.TabIndex = 1;
@@ -119,12 +124,39 @@ namespace BedWorker
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 21.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(161, 295);
+            this.label1.Location = new System.Drawing.Point(161, 240);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(365, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "点击或拖拽文件到此处上传";
             this.label1.Click += new System.EventHandler(this.GroupBoxOpenFileDialog_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label2.Location = new System.Drawing.Point(7, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Url:";
+            // 
+            // textBox_lastUploadUrl
+            // 
+            this.textBox_lastUploadUrl.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.textBox_lastUploadUrl.Location = new System.Drawing.Point(31, 36);
+            this.textBox_lastUploadUrl.Name = "textBox_lastUploadUrl";
+            this.textBox_lastUploadUrl.ReadOnly = true;
+            this.textBox_lastUploadUrl.Size = new System.Drawing.Size(645, 22);
+            this.textBox_lastUploadUrl.TabIndex = 3;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 419);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(688, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // BedWorkerApplicationForm
             // 
@@ -132,6 +164,9 @@ namespace BedWorker
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 441);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.textBox_lastUploadUrl);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox_upload);
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -163,6 +198,9 @@ namespace BedWorker
         private System.Windows.Forms.GroupBox groupBox_upload;
         private System.Windows.Forms.PictureBox pictureBox_index_upload;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox_lastUploadUrl;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
 
