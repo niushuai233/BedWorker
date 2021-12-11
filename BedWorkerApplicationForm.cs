@@ -5,11 +5,6 @@ using System.Windows.Forms;
 using BedWorker.Config;
 using BedWorker.Utils;
 using BedWorker.Forms.FormSettings;
-using Newtonsoft.Json;
-using BedWorker.Entity;
-using System.Collections.Generic;
-using EasyHttp.Http;
-using BedWorker.Entity.Base;
 
 namespace BedWorker
 {
@@ -126,6 +121,54 @@ namespace BedWorker
             bool resultY = (cursorPos.Y > gb.Location.Y && cursorPos.Y < gb.Location.Y + gb.Size.Height) ? true : false;
 
             return resultX && resultY;
+        }
+
+        private void Button_copySource_Click(object sender, EventArgs e)
+        {
+            Copy(1);
+        }
+
+        private void Button_copyMarkdown_Click(object sender, EventArgs e)
+        {
+            Copy(2);
+        }
+
+        private void Button_copyHtml_Click(object sender, EventArgs e)
+        {
+            Copy(3);
+        }
+
+        private void Copy(int type)
+        {
+            string uploadUrl = GetCopyData(type);
+            if (string.IsNullOrEmpty(uploadUrl))
+            {
+                return;
+            }
+
+            Clipboard.SetDataObject(uploadUrl, true);
+        }
+
+        private string GetCopyData(int type)
+        {
+            string uploadUrl = this.textBox_lastUploadUrl.Text.Trim();
+            switch (type)
+            {
+                case 1:
+                    // 源数据
+                    return uploadUrl;
+                case 2:
+                    // markdown
+                    uploadUrl = "![](" + uploadUrl + ")";
+                    return uploadUrl;
+                case 3:
+                    // html
+                    uploadUrl = "<img src='" + uploadUrl + "'></img>";
+                    return uploadUrl;
+                default:
+                    // 默认
+                    return uploadUrl;
+            }
         }
     }
 }

@@ -40,11 +40,16 @@ namespace BedWorker
             this.pictureBox_index_upload = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox_lastUploadUrl = new System.Windows.Forms.TextBox();
+            this.textBox_lastUploadUrl = new BedWorker.Entity.Base.TextBoxExt();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button_copyHtml = new System.Windows.Forms.Button();
+            this.button_copyMarkdown = new System.Windows.Forms.Button();
+            this.button_copySource = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.groupBox_upload.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_index_upload)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -71,7 +76,7 @@ namespace BedWorker
             // AppSettingsToolStripMenuItem
             // 
             this.AppSettingsToolStripMenuItem.Name = "AppSettingsToolStripMenuItem";
-            this.AppSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AppSettingsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.AppSettingsToolStripMenuItem.Text = "工具设置";
             this.AppSettingsToolStripMenuItem.Click += new System.EventHandler(this.ToolSettingsMenuItem_click);
             // 
@@ -80,7 +85,7 @@ namespace BedWorker
             this.BedServerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.giteeToolStripMenuItem});
             this.BedServerToolStripMenuItem.Name = "BedServerToolStripMenuItem";
-            this.BedServerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.BedServerToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.BedServerToolStripMenuItem.Text = "图床设置";
             // 
             // giteeToolStripMenuItem
@@ -146,6 +151,7 @@ namespace BedWorker
             this.textBox_lastUploadUrl.Font = new System.Drawing.Font("微软雅黑", 8F);
             this.textBox_lastUploadUrl.Location = new System.Drawing.Point(31, 36);
             this.textBox_lastUploadUrl.Name = "textBox_lastUploadUrl";
+            this.textBox_lastUploadUrl.Placeholder = "上传成功回显Url地址";
             this.textBox_lastUploadUrl.ReadOnly = true;
             this.textBox_lastUploadUrl.Size = new System.Drawing.Size(645, 22);
             this.textBox_lastUploadUrl.TabIndex = 3;
@@ -158,12 +164,56 @@ namespace BedWorker
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button_copyHtml);
+            this.groupBox1.Controls.Add(this.button_copyMarkdown);
+            this.groupBox1.Controls.Add(this.button_copySource);
+            this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.groupBox1.Location = new System.Drawing.Point(13, 365);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(663, 51);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "操作区";
+            // 
+            // button_copyHtml
+            // 
+            this.button_copyHtml.Location = new System.Drawing.Point(210, 22);
+            this.button_copyHtml.Name = "button_copyHtml";
+            this.button_copyHtml.Size = new System.Drawing.Size(100, 23);
+            this.button_copyHtml.TabIndex = 2;
+            this.button_copyHtml.Text = "复制为html";
+            this.button_copyHtml.UseVisualStyleBackColor = true;
+            this.button_copyHtml.Click += new System.EventHandler(this.Button_copyHtml_Click);
+            // 
+            // button_copyMarkdown
+            // 
+            this.button_copyMarkdown.Location = new System.Drawing.Point(110, 22);
+            this.button_copyMarkdown.Name = "button_copyMarkdown";
+            this.button_copyMarkdown.Size = new System.Drawing.Size(100, 23);
+            this.button_copyMarkdown.TabIndex = 1;
+            this.button_copyMarkdown.Text = "复制为md";
+            this.button_copyMarkdown.UseVisualStyleBackColor = true;
+            this.button_copyMarkdown.Click += new System.EventHandler(this.Button_copyMarkdown_Click);
+            // 
+            // button_copySource
+            // 
+            this.button_copySource.Location = new System.Drawing.Point(10, 22);
+            this.button_copySource.Name = "button_copySource";
+            this.button_copySource.Size = new System.Drawing.Size(100, 23);
+            this.button_copySource.TabIndex = 0;
+            this.button_copySource.Text = "复制源地址";
+            this.button_copySource.UseVisualStyleBackColor = true;
+            this.button_copySource.Click += new System.EventHandler(this.Button_copySource_Click);
+            // 
             // BedWorkerApplicationForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 441);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.textBox_lastUploadUrl);
             this.Controls.Add(this.label2);
@@ -182,6 +232,7 @@ namespace BedWorker
             this.groupBox_upload.ResumeLayout(false);
             this.groupBox_upload.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_index_upload)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,8 +250,12 @@ namespace BedWorker
         private System.Windows.Forms.PictureBox pictureBox_index_upload;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox_lastUploadUrl;
+        private BedWorker.Entity.Base.TextBoxExt textBox_lastUploadUrl;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button_copySource;
+        private System.Windows.Forms.Button button_copyMarkdown;
+        private System.Windows.Forms.Button button_copyHtml;
     }
 }
 
