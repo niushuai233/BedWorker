@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using BedWorker.Config;
 using BedWorker.Utils;
 using BedWorker.Forms.FormSettings;
+using System.Collections.Generic;
 
 namespace BedWorker
 {
@@ -53,12 +54,43 @@ namespace BedWorker
             {
                 // 获取拖拽进来的文件列表
                 string[] filesPath = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                bool uploadFlag = true;
+                string str = "以下文件为非图片文件, 请检查!\n";
                 foreach (string file in filesPath)
                 {
-                    FileStream fs = new FileStream(file, FileMode.Open);
-                    
-                    Console.WriteLine(file);
-                    fs.Close();
+                    if (!CommonUtil.IsImgFile(file))
+                    {
+                        str += file + "\n";
+                        uploadFlag = false;
+                    }
+                }
+
+                if (uploadFlag)
+                {
+                    string uploadingTemplate = "{0}/{1}, 当前上传文件: {2}";
+                    string successTemplate = "文件[{0}]上传成功";
+                    // 继续上传
+                    this.textBox_lastUploadUrl.Text = "";
+                    for (int i = 0; i < filesPath.Length; i++)
+                    {
+                        string file = filesPath[i];
+                        CommonUtil.UpdateMainStatusLabel(this.toolStripStatusLabel_DisplayText, string.Format(uploadingTemplate, i + 1, filesPath.Length, file));
+
+                        string _upload = ApiGiteeUtil.GiteeUpload(file);
+                        if (string.IsNullOrEmpty(_upload))
+                        {
+                            DialogResult dialogResult = MessageBox.Show(file + " 上传失败, 是否继续", "Error", MessageBoxButtons.OKCancel);
+                            if (dialogResult != DialogResult.OK)
+                            {
+                                // 中止上传
+                                return;
+                            }
+                        }
+                        this.textBox_lastUploadUrl.Text += "; " + _upload;
+                        // 上传成功
+                        CommonUtil.UpdateMainStatusLabel(this.toolStripStatusLabel_DisplayText, string.Format(successTemplate, file));
+                    }
                 }
             }
         }
@@ -144,12 +176,15 @@ namespace BedWorker
         private void Copy(int type)
         {
             string uploadUrl = GetCopyData(type);
-            if (string.IsNullOrEmpty(uploadUrl))
+            if (string.IsNullOrEmpty(uploadUrl) || string.Equals(uploadUrl, "![]()") || string.Equals
+                (uploadUrl, "<img src=''></img>"))
             {
+                this.toolStripStatusLabel_DisplayText.Text = "无可复制内容";
                 return;
             }
 
             Clipboard.SetDataObject(uploadUrl, true);
+            this.toolStripStatusLabel_DisplayText.Text = "复制成功";
         }
 
         private string GetCopyData(int type)

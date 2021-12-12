@@ -140,5 +140,30 @@ namespace BedWorker.Utils
 
             return map;
         }
+
+        public static bool IsImgFile(string filePath)
+        {
+            string ext = Path.GetExtension(filePath);
+            List<string> extList = new List<string>();
+
+            extList.Add(".jpg");
+            extList.Add(".jpeg");
+            extList.Add(".png");
+            extList.Add(".bmp");
+            extList.Add(".gif");
+            extList.Add(".tif");
+
+            if (extList.Contains(ext.ToLower()))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static void UpdateMainStatusLabel(System.Windows.Forms.ToolStripStatusLabel statusLabel, string text)
+        {
+            statusLabel.Text = text;
+        }
     }
 }

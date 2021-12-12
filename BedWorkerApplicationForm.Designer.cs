@@ -30,7 +30,7 @@ namespace BedWorker
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BedWorkerApplicationForm));
-            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.mainMenuStrip_Main = new System.Windows.Forms.MenuStrip();
             this.AllSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AppSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BedServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,29 +40,33 @@ namespace BedWorker
             this.pictureBox_index_upload = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox_lastUploadUrl = new BedWorker.Entity.Base.TextBoxExt();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip_Main = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel_DisplayText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_EmptyFill = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar_uploadProcessBar = new System.Windows.Forms.ToolStripProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button_copyHtml = new System.Windows.Forms.Button();
             this.button_copyMarkdown = new System.Windows.Forms.Button();
             this.button_copySource = new System.Windows.Forms.Button();
-            this.mainMenuStrip.SuspendLayout();
+            this.textBox_lastUploadUrl = new BedWorker.Entity.Base.TextBoxExt();
+            this.mainMenuStrip_Main.SuspendLayout();
             this.groupBox_upload.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_index_upload)).BeginInit();
+            this.statusStrip_Main.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // mainMenuStrip
+            // mainMenuStrip_Main
             // 
-            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenuStrip_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AllSettingsToolStripMenuItem,
             this.AboutToolStripMenuItem});
-            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
-            this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(11, 4, 0, 4);
-            this.mainMenuStrip.Size = new System.Drawing.Size(688, 29);
-            this.mainMenuStrip.TabIndex = 0;
-            this.mainMenuStrip.Text = "menuStrip1";
+            this.mainMenuStrip_Main.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuStrip_Main.Name = "mainMenuStrip_Main";
+            this.mainMenuStrip_Main.Padding = new System.Windows.Forms.Padding(11, 4, 0, 4);
+            this.mainMenuStrip_Main.Size = new System.Drawing.Size(688, 29);
+            this.mainMenuStrip_Main.TabIndex = 0;
+            this.mainMenuStrip_Main.Text = "menuStrip1";
             // 
             // AllSettingsToolStripMenuItem
             // 
@@ -146,23 +150,36 @@ namespace BedWorker
             this.label2.TabIndex = 2;
             this.label2.Text = "Url:";
             // 
-            // textBox_lastUploadUrl
+            // statusStrip_Main
             // 
-            this.textBox_lastUploadUrl.Font = new System.Drawing.Font("微软雅黑", 8F);
-            this.textBox_lastUploadUrl.Location = new System.Drawing.Point(31, 36);
-            this.textBox_lastUploadUrl.Name = "textBox_lastUploadUrl";
-            this.textBox_lastUploadUrl.Placeholder = "上传成功回显Url地址";
-            this.textBox_lastUploadUrl.ReadOnly = true;
-            this.textBox_lastUploadUrl.Size = new System.Drawing.Size(645, 22);
-            this.textBox_lastUploadUrl.TabIndex = 3;
+            this.statusStrip_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel_DisplayText,
+            this.toolStripStatusLabel_EmptyFill,
+            this.toolStripProgressBar_uploadProcessBar});
+            this.statusStrip_Main.Location = new System.Drawing.Point(0, 419);
+            this.statusStrip_Main.Name = "statusStrip_Main";
+            this.statusStrip_Main.Size = new System.Drawing.Size(688, 22);
+            this.statusStrip_Main.TabIndex = 4;
+            this.statusStrip_Main.Text = "statusStrip1";
             // 
-            // statusStrip1
+            // toolStripStatusLabel_DisplayText
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 419);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(688, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
+            this.toolStripStatusLabel_DisplayText.Name = "toolStripStatusLabel_DisplayText";
+            this.toolStripStatusLabel_DisplayText.Size = new System.Drawing.Size(44, 17);
+            this.toolStripStatusLabel_DisplayText.Text = "内容区";
+            // 
+            // toolStripStatusLabel_EmptyFill
+            // 
+            this.toolStripStatusLabel_EmptyFill.Name = "toolStripStatusLabel_EmptyFill";
+            this.toolStripStatusLabel_EmptyFill.Size = new System.Drawing.Size(427, 17);
+            this.toolStripStatusLabel_EmptyFill.Spring = true;
+            // 
+            // toolStripProgressBar_uploadProcessBar
+            // 
+            this.toolStripProgressBar_uploadProcessBar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripProgressBar_uploadProcessBar.Name = "toolStripProgressBar_uploadProcessBar";
+            this.toolStripProgressBar_uploadProcessBar.RightToLeftLayout = true;
+            this.toolStripProgressBar_uploadProcessBar.Size = new System.Drawing.Size(200, 16);
             // 
             // groupBox1
             // 
@@ -207,6 +224,16 @@ namespace BedWorker
             this.button_copySource.UseVisualStyleBackColor = true;
             this.button_copySource.Click += new System.EventHandler(this.Button_copySource_Click);
             // 
+            // textBox_lastUploadUrl
+            // 
+            this.textBox_lastUploadUrl.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.textBox_lastUploadUrl.Location = new System.Drawing.Point(31, 36);
+            this.textBox_lastUploadUrl.Name = "textBox_lastUploadUrl";
+            this.textBox_lastUploadUrl.Placeholder = "上传成功回显Url地址";
+            this.textBox_lastUploadUrl.ReadOnly = true;
+            this.textBox_lastUploadUrl.Size = new System.Drawing.Size(645, 22);
+            this.textBox_lastUploadUrl.TabIndex = 3;
+            // 
             // BedWorkerApplicationForm
             // 
             this.AllowDrop = true;
@@ -214,24 +241,26 @@ namespace BedWorker
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 441);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip_Main);
             this.Controls.Add(this.textBox_lastUploadUrl);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox_upload);
-            this.Controls.Add(this.mainMenuStrip);
+            this.Controls.Add(this.mainMenuStrip_Main);
             this.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.MainMenuStrip = this.mainMenuStrip;
+            this.MainMenuStrip = this.mainMenuStrip_Main;
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "BedWorkerApplicationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BedWorker v1.0 @niushuai233";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.DragDropFile_click);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnterFile_click);
-            this.mainMenuStrip.ResumeLayout(false);
-            this.mainMenuStrip.PerformLayout();
+            this.mainMenuStrip_Main.ResumeLayout(false);
+            this.mainMenuStrip_Main.PerformLayout();
             this.groupBox_upload.ResumeLayout(false);
             this.groupBox_upload.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_index_upload)).EndInit();
+            this.statusStrip_Main.ResumeLayout(false);
+            this.statusStrip_Main.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -240,7 +269,7 @@ namespace BedWorker
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip mainMenuStrip;
+        private System.Windows.Forms.MenuStrip mainMenuStrip_Main;
         private System.Windows.Forms.ToolStripMenuItem AllSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AppSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
@@ -251,11 +280,14 @@ namespace BedWorker
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private BedWorker.Entity.Base.TextBoxExt textBox_lastUploadUrl;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip_Main;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button_copySource;
         private System.Windows.Forms.Button button_copyMarkdown;
         private System.Windows.Forms.Button button_copyHtml;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_DisplayText;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar_uploadProcessBar;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_EmptyFill;
     }
 }
 
