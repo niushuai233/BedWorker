@@ -87,7 +87,13 @@ namespace BedWorker
                                 return;
                             }
                         }
-                        this.textBox_lastUploadUrl.Text += "; " + _upload;
+                        if (string.IsNullOrEmpty(this.textBox_lastUploadUrl.Text))
+                        {
+                            this.textBox_lastUploadUrl.Text = _upload;
+                        } else
+                        {
+                            this.textBox_lastUploadUrl.Text += "; " + _upload;
+                        }
                         // 上传成功
                         CommonUtil.UpdateMainStatusLabel(this.toolStripStatusLabel_DisplayText, string.Format(successTemplate, file));
                     }
