@@ -48,6 +48,7 @@ namespace BedWorker
             this.button_copyHtml = new System.Windows.Forms.Button();
             this.button_copyMarkdown = new System.Windows.Forms.Button();
             this.button_copySource = new System.Windows.Forms.Button();
+            this.button_UploadFromClipeboard = new System.Windows.Forms.Button();
             this.textBox_lastUploadUrl = new BedWorker.Entity.Base.TextBoxExt();
             this.mainMenuStrip_Main.SuspendLayout();
             this.groupBox_upload.SuspendLayout();
@@ -183,6 +184,7 @@ namespace BedWorker
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button_UploadFromClipeboard);
             this.groupBox1.Controls.Add(this.button_copyHtml);
             this.groupBox1.Controls.Add(this.button_copyMarkdown);
             this.groupBox1.Controls.Add(this.button_copySource);
@@ -198,7 +200,7 @@ namespace BedWorker
             // 
             this.button_copyHtml.Location = new System.Drawing.Point(210, 22);
             this.button_copyHtml.Name = "button_copyHtml";
-            this.button_copyHtml.Size = new System.Drawing.Size(100, 23);
+            this.button_copyHtml.Size = new System.Drawing.Size(100, 27);
             this.button_copyHtml.TabIndex = 2;
             this.button_copyHtml.Text = "复制为html";
             this.button_copyHtml.UseVisualStyleBackColor = true;
@@ -208,7 +210,7 @@ namespace BedWorker
             // 
             this.button_copyMarkdown.Location = new System.Drawing.Point(110, 22);
             this.button_copyMarkdown.Name = "button_copyMarkdown";
-            this.button_copyMarkdown.Size = new System.Drawing.Size(100, 23);
+            this.button_copyMarkdown.Size = new System.Drawing.Size(100, 27);
             this.button_copyMarkdown.TabIndex = 1;
             this.button_copyMarkdown.Text = "复制为md";
             this.button_copyMarkdown.UseVisualStyleBackColor = true;
@@ -218,11 +220,23 @@ namespace BedWorker
             // 
             this.button_copySource.Location = new System.Drawing.Point(10, 22);
             this.button_copySource.Name = "button_copySource";
-            this.button_copySource.Size = new System.Drawing.Size(100, 23);
+            this.button_copySource.Size = new System.Drawing.Size(100, 27);
             this.button_copySource.TabIndex = 0;
             this.button_copySource.Text = "复制源地址";
             this.button_copySource.UseVisualStyleBackColor = true;
             this.button_copySource.Click += new System.EventHandler(this.Button_copySource_Click);
+            // 
+            // button_UploadFromClipeboard
+            // 
+            this.button_UploadFromClipeboard.BackColor = System.Drawing.Color.Firebrick;
+            this.button_UploadFromClipeboard.ForeColor = System.Drawing.SystemColors.Control;
+            this.button_UploadFromClipeboard.Location = new System.Drawing.Point(555, 22);
+            this.button_UploadFromClipeboard.Name = "button_UploadFromClipeboard";
+            this.button_UploadFromClipeboard.Size = new System.Drawing.Size(100, 27);
+            this.button_UploadFromClipeboard.TabIndex = 3;
+            this.button_UploadFromClipeboard.Text = "剪贴板上传";
+            this.button_UploadFromClipeboard.UseVisualStyleBackColor = false;
+            this.button_UploadFromClipeboard.Click += new System.EventHandler(this.button_UploadFromClipeboard_Click);
             // 
             // textBox_lastUploadUrl
             // 
@@ -288,6 +302,7 @@ namespace BedWorker
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_DisplayText;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar_uploadProcessBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_EmptyFill;
+        private System.Windows.Forms.Button button_UploadFromClipeboard;
     }
 }
 

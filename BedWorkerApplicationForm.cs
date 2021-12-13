@@ -120,13 +120,18 @@ namespace BedWorker
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // 已选择文件
-                string uploadFilePath = this.ServerUpload(openFileDialog.FileName);
-
-                // MessageBox.Show(uploadFilePath);
-                this.textBox_lastUploadUrl.Text = uploadFilePath;
+                DoUpload(openFileDialog.FileName);
             }
 
+        }
+
+        private void DoUpload(string filePath)
+        {
+            // 已选择文件
+            string uploadFilePath = this.ServerUpload(filePath);
+
+            // MessageBox.Show(uploadFilePath);
+            this.textBox_lastUploadUrl.Text = uploadFilePath;
         }
 
         private string ServerUpload(string filePath)
@@ -213,6 +218,30 @@ namespace BedWorker
                     // 默认
                     return uploadUrl;
             }
+        }
+
+        private void button_UploadFromClipeboard_Click(object sender, EventArgs e)
+        {
+
+            System.Drawing.Image image = Clipboard.GetImage();
+
+            if (image == null)
+            {
+                MessageBox.Show("剪贴板无截图");
+                return;
+            }
+
+            // 保存一份临时文件 转换文件结尾为png格式
+            string tmpFile = Path.GetTempFileName().Replace(".tmp", ".png");
+            image.Save(tmpFile);
+
+            // 上传文件
+            DoUpload(tmpFile);
+
+            // 删除文件
+            File.Delete(tmpFile);
+
+            // MessageBox.Show(String.Format("{0}, {1}, {2}", image.Tag, image.GetType(), image.Size));
         }
     }
 }
